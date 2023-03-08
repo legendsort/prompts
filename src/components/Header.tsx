@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Icon from '@/components/Icon';
 import { SOCIAL_LINKS, ROUTE_MAP } from '@/helpers/constants';
 
 export default function Header() {
@@ -18,14 +19,14 @@ export default function Header() {
               type="text"
               placeholder="Search Prompts..."
             />
-            <Image src="/search.svg" alt="search" width="20" height="20" />
+            <Icon>search</Icon>
           </div>
 
           <nav className="flex opacity-70">
             {ROUTE_MAP.map(({ title, href, icon }) => (
               <Link key={title} className="flex items-center mr-6 last:mr-0" href={href}>
                 {title}
-                {icon && <Image className="ml-1" src={icon} alt={title} width="8" height="8" />}
+                {icon && <Icon className="ml-1">{icon}</Icon>}
               </Link>
             ))}
           </nav>

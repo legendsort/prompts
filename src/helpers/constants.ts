@@ -3,17 +3,17 @@ import { Tag, TagData, TagPosition } from '@/helpers/interface';
 export const SOCIAL_LINKS = [
   {
     type: 'facebook',
-    icon: '/facebook.svg',
+    icon: '/socials/facebook.svg',
     href: '/#',
   },
   {
     type: 'instagram',
-    icon: '/instagram.svg',
+    icon: '/socials/instagram.svg',
     href: '/#',
   },
   {
     type: 'twitter',
-    icon: '/twitter.svg',
+    icon: '/socials/twitter.svg',
     href: '/#',
   },
 ];
@@ -53,50 +53,50 @@ export const ROUTE_MAP = [
   {
     title: 'Sell',
     href: '/sell',
-    icon: '/right-arrow.svg',
+    icon: 'right-arrow',
   },
 ];
 
 export const FEATURED_MAP = [
   {
     title: 'wsj',
-    image: '/wsj.svg',
+    image: '/featuredins/wsj.svg',
     width: 85,
     height: 40,
   },
   {
     title: 'yahoo',
-    image: '/yahoo.svg',
+    image: '/featuredins/yahoo.svg',
     width: 290,
     height: 40,
   },
   {
     title: 'ft',
-    image: '/ft.svg',
+    image: '/featuredins/ft.svg',
     width: 390,
     height: 30,
   },
   {
     title: 'atlantic',
-    image: '/atlantic.svg',
+    image: '/featuredins/atlantic.svg',
     width: 85,
     height: 30,
   },
   {
     title: 'fastcompany',
-    image: '/fastcompany.svg',
+    image: '/featuredins/fastcompany.svg',
     width: 200,
     height: 30,
   },
   {
     title: 'wired',
-    image: '/wired.svg',
+    image: '/featuredins/wired.svg',
     width: 150,
     height: 30,
   },
   {
     title: 'verge',
-    image: '/verge.svg',
+    image: '/featuredins/verge.svg',
     width: 175,
     height: 30,
   },
