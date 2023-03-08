@@ -1,3 +1,5 @@
+import { Tag, TagData, TagPosition } from '@/helpers/interface';
+
 export const SOCIAL_LINKS = [
   {
     type: 'facebook',
@@ -99,3 +101,26 @@ export const FEATURED_MAP = [
     height: 30,
   },
 ];
+
+export const TAG_IMAGE_MAP = {
+  [Tag.midjourney]: {
+    position: TagPosition.left,
+    image: '/tags/midjourney.png',
+  },
+  [Tag.gpt3]: {
+    position: TagPosition.right,
+    image: '/tags/gpt3.png',
+  },
+  [Tag.dalle]: {
+    position: TagPosition.left,
+    image: '/tags/dalle.png',
+  },
+  [Tag.diffusion]: {
+    position: TagPosition.left,
+    image: '/tags/diffusion.png',
+  },
+  rating: {
+    position: TagPosition.left,
+    image: '/tags/rating.png',
+  },
+} as { [keys: string]: TagData };
