@@ -6,9 +6,7 @@
 
 @layer base {
 	body {
-		background-color: #8b8b8b;
-
-		@apply font-finlandica leading-5 text-white;
+		@apply font-finlandica leading-5 text-white bg-[#0C0807];
 	}
 }
 
