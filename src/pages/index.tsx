@@ -25,7 +25,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className="flex flex-col items-center mb-36">
+        <div className="container h-[calc(100vh-80px)] mx-auto mb-36"></div>
+
+        <div className="container flex flex-col items-center mx-auto mb-36">
           <h3 className="mb-9 font-semibold">Featured In</h3>
 
           <div className="flex flex-wrap max-w-[1005px] gap-y-8 -mr-20">
@@ -35,7 +37,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center mb-36">
+        <div className="container flex flex-col items-center mx-auto mb-36">
           <div className="grid grid-cols-3 gap-x-5 px-28 pb-7 mb-16 border-b-[0.5px] border-b-white">
             <button className="prompts-button active">Featured Prompts</button>
             <button className="prompts-button">Trending Prompts</button>
@@ -67,7 +69,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center mb-36">
+        <div className="container flex flex-col items-center mx-auto mb-36">
           <div className="prompts-swiper-action">
             <div>
               <h3>Most Popular Prompts This Week</h3>
@@ -131,7 +133,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center mb-36">
+        <div className="container flex flex-col items-center mx-auto mb-36">
           <div className="prompts-swiper-action">
             <div>
               <h3>Newest Midjourney Prompts</h3>
@@ -195,7 +197,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center mb-36">
+        <div className="container flex flex-col items-center mx-auto mb-36">
           <div className="prompts-swiper-action">
             <div>
               <h3>Newest DALL·E Prompts</h3>

@@ -42,13 +42,13 @@
 	}
 
 	.prompts-swiper-action {
-		@apply container mb-20;
+		@apply w-full mb-20;
 
 		& > div {
-			@apply flex mb-9;
+			@apply flex mb-9 justify-between;
 
 			& > div {
-				@apply flex items-center gap-x-3 ml-auto;
+				@apply flex items-center gap-x-3;
 
 				& > button {
 					@apply slider-button;
