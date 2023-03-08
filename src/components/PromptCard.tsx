@@ -7,7 +7,7 @@ export default function PromptCard({ title, price, tag, image, rating }: PromptC
 
   return (
     <div
-      className="flex flex-col w-[270px] h-[240px] bg-no-repeat bg-cover border-2 border-[#FFFFFF4D] rounded-lg"
+      className="flex flex-col w-[270px] h-[240px] bg-no-repeat bg-cover bg-center border-2 border-[#FFFFFF4D] rounded-lg"
       style={{ backgroundImage: `url('${image}')` }}
     >
       <div className="flex justify-between p-3.5" style={{ flexDirection: getDirection(rating) }}>
