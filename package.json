@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ]
   },
   "dependencies": {
     "@types/node": "18.14.6",
@@ -18,5 +25,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "eslint-config-prettier": "^8.7.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7"
   }
 }
