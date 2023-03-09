@@ -1,4 +1,107 @@
-import { Prompt, Tag } from '@/helpers/interface';
+import { Prompt, Tag, User, Message } from '@/helpers/interface';
+
+export const messages: Message[] = [
+  {
+    avatar: '/avatars/avatar1.png',
+    message: 'Hello, How are you',
+    timeStamp: '8:00 PM',
+    type: 'other',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    message: 'Fine, and you',
+    timeStamp: '8:00 PM',
+    type: 'me',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    message: "What's your gmail i'd",
+    timeStamp: '8:01 PM',
+    type: 'me',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    message: "Email I'd is jhoneoe123@gmail.com",
+    timeStamp: '8:02 PM',
+    type: 'other',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    message: 'Sit ornare amet tortor faucibus',
+    timeStamp: '8:02 PM',
+    type: 'me',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    message: 'It is okay',
+    timeStamp: '8:02 PM',
+    type: 'other',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    message: 'Non velit aliquam ultrices consecteur aliquam. Suspendises.',
+    timeStamp: '8:03 PM',
+    type: 'me',
+  },
+];
+
+export const users: User[] = [
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'Jane Cooper',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    name: 'Jocelyn Eksttrom Bothman',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    name: 'Jocelyn Eksttrom Bothman',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    name: 'Jocelyn Eksttrom Bothman',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    name: 'Jocelyn Eksttrom Bothman',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar1.png',
+    name: 'Jane Cooper',
+    nickName: 'ronald',
+  },
+  {
+    avatar: '/avatars/avatar2.png',
+    name: 'Jocelyn Eksttrom Bothman',
+    nickName: 'ronald',
+  },
+];
 
 export const featuredPrompts: Prompt[] = [
   {

@@ -25,3 +25,16 @@ export type TagData = {
   position: TagPosition;
   image: string;
 };
+
+export type User = {
+  avatar: string;
+  name: string;
+  nickName: string;
+};
+
+export type Message = {
+  avatar: string;
+  message: string;
+  timeStamp: string;
+  type: string;
+};

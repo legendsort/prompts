@@ -118,7 +118,7 @@ export default function Home() {
         </div>
 
         <div className="blog">
-          <Image src="/youtube.png" alt="youtube" width="555" height="330" />
+          <Image src="/blogs/youtube.png" alt="youtube" width="555" height="330" />
 
           <div>
             <h2>Earn from your Prompt Engineering skills</h2>
@@ -182,7 +182,7 @@ export default function Home() {
         </div>
 
         <div className="blog flex-row-reverse">
-          <Image src="/generate.png" alt="generate" width="555" height="330" />
+          <Image src="/blogs/generate.png" alt="generate" width="555" height="330" />
 
           <div>
             <h2>Generate images directly in PromptBase</h2>

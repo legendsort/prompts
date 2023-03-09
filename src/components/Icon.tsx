@@ -4,6 +4,9 @@ const icons = {
   left: dynamic(() => import('@@/icons/left.svg')),
   right: dynamic(() => import('@@/icons/right.svg')),
   search: dynamic(() => import('@@/icons/search.svg')),
+  emoti: dynamic(() => import('@@/icons/emoti.svg')),
+  paperClip: dynamic(() => import('@@/icons/paper-clip.svg')),
+  send: dynamic(() => import('@@/icons/send.svg')),
   'right-arrow': dynamic(() => import('@@/icons/right-arrow.svg')),
 } as { [keys: string]: any };
 
