@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Icon from '@/components/Icon';
+import clsx from 'classnames';
 
 interface FilterSectionProps {
   tagImg: string;
@@ -10,8 +11,9 @@ interface FilterSectionProps {
 }
 
 const FilterSection = ({ tagImg, tag, filterLists, filter, onChange }: FilterSectionProps) => {
+  console.log(tag);
   return (
-    <div className="flex flex-col border-b-[0.5px] border-[#FFFFFF66] px-4 pt-8">
+    <div className={clsx('flex flex-col border-[#FFFFFF66] px-4 pt-8', { 'border-b-[0.5px]': tag !== 'Categories' })}>
       <div className="flex flex-row items-center gap-4">
         <Image src={tagImg} alt="filterSectiontag" width="24" height="24" />
         <p>{tag} </p>

@@ -40,7 +40,11 @@ export type Message = {
 };
 
 export type IFilterSection = {
-  tagImg: string;
-  tagTitle: string;
-  filterLists: string[];
+  [section: string]: {
+    tagImg: string;
+    tagTitle: string;
+    filterLists: {
+      [key: string]: string;
+    };
+  };
 };

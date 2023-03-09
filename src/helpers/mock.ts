@@ -1,6 +1,6 @@
 import { Prompt, Tag, User, Message, IFilterSection } from '@/helpers/interface';
 
-export const FilterSections: any = {
+export const FilterSections: IFilterSection = {
   sortBy: {
     tagImg: '/tags/sortby.png',
     tagTitle: 'Sort By',
@@ -164,6 +164,201 @@ export const users: User[] = [
     avatar: '/avatars/avatar2.png',
     name: 'Jocelyn Eksttrom Bothman',
     nickName: 'ronald',
+  },
+];
+
+export const trendingPrompts: Prompt[] = [
+  {
+    title: 'Retro Neon Signs',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured1.png',
+  },
+  {
+    title: 'Platform Game Level Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured2.png',
+  },
+  {
+    title: 'Chalk Board Style Illustrations',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured3.png',
+  },
+  {
+    title: 'Pop Retro American Comic St...',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured4.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
+  },
+  {
+    title: 'Asian Art T-shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured5.png',
+  },
+  {
+    title: 'Food Advertising Photography',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured6.png',
+  },
+  {
+    title: 'Cartoon Backgrounds',
+    price: 5.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured7.png',
+  },
+  {
+    title: 'Indoor Light Paintings',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured8.png',
   },
 ];
 
