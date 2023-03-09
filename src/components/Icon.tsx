@@ -7,6 +7,7 @@ const icons = {
   emoti: dynamic(() => import('@@/icons/emoti.svg')),
   paperClip: dynamic(() => import('@@/icons/paper-clip.svg')),
   send: dynamic(() => import('@@/icons/send.svg')),
+  check: dynamic(() => import('@@/icons/check.svg')),
   'right-arrow': dynamic(() => import('@@/icons/right-arrow.svg')),
 } as { [keys: string]: any };
 

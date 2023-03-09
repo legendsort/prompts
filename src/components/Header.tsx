@@ -6,7 +6,7 @@ import { SOCIAL_LINKS, ROUTE_MAP } from '@/helpers/constants';
 export default function Header() {
   return (
     <header className="flex h-[80px] border-b-[0.5px] border-[#FFFFFF66]">
-      <div className="flex items-center px-12 border-r-[0.5px] border-[#FFFFFF66]">
+      <div className="flex items-center justify-center w-[275px] border-r-[0.5px] border-[#FFFFFF66]">
         <Image className="mr-3" src="/logo.png" alt="logo" width="54" height="54" />
         <Image src="/title.svg" alt="prompts" width="110" height="25" />
       </div>

@@ -38,3 +38,9 @@ export type Message = {
   timeStamp: string;
   type: string;
 };
+
+export type IFilterSection = {
+  tagImg: string;
+  tagTitle: string;
+  filterLists: string[];
+};

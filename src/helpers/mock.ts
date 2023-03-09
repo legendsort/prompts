@@ -1,4 +1,68 @@
-import { Prompt, Tag, User, Message } from '@/helpers/interface';
+import { Prompt, Tag, User, Message, IFilterSection } from '@/helpers/interface';
+
+export const FilterSections: any = {
+  sortBy: {
+    tagImg: '/tags/sortby.png',
+    tagTitle: 'Sort By',
+    filterLists: {
+      trending: 'Trending',
+      mostPopular: 'Most Popular',
+    },
+  },
+  prompts: {
+    tagImg: '/tags/prompts.png',
+    tagTitle: 'Prompts',
+    filterLists: {
+      dalle: 'DALLE',
+      midjourney: 'Midjourney',
+      GPT3: 'GPT-3',
+      chatGPT: 'ChatGPT',
+      prompts: 'Prompts',
+      stableDiffusion: 'Stable Diffusion',
+    },
+  },
+  categories: {
+    tagImg: '/tags/categories.png',
+    tagTitle: 'Categories',
+    filterLists: {
+      threeD: '3D',
+      accessory: 'Accessory',
+      animal: 'Animal',
+      anime: 'Anime',
+      avatar: 'Avatar',
+      building: 'Building',
+      cartoon: 'Cartoon',
+      clothes: 'Clothes',
+      cute: 'Cute',
+      drawing: 'Drawing',
+      fantasy: 'Fantasy',
+      food: 'Food',
+      future: 'Future',
+      games: 'Games',
+      graphicDesign: 'Graphic Design',
+      icons: 'Icons',
+      jewelry: 'Jewelry',
+      landscape: 'Landscape',
+      logo: 'Logo',
+      mockup: 'Mockup',
+      monogram: 'Monogram',
+      nature: 'Nature',
+      NSFW: 'NSFW',
+      pattern: 'Pattern',
+      people: 'People',
+      photography: 'Photography',
+      pixelArt: 'Pixel Art',
+      product: 'Product',
+      psychedelic: 'Psychedelic',
+      scary: 'Scary',
+      space: 'Space',
+      synthwave: 'Synthwave',
+      uniqueStyle: 'Unique Style',
+      vehicle: 'Vehicle',
+      wallpaper: 'Wallpaper',
+    },
+  },
+};
 
 export const messages: Message[] = [
   {
