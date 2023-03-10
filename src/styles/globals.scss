@@ -7,77 +7,83 @@
 @import 'swiper/css';
 
 @layer base {
-	body {
-		@apply font-finlandica leading-5 text-white bg-[#0C0807];
-	}
+  body {
+    @apply font-finlandica leading-5 text-white bg-[#0C0807];
+  }
 
-	h2 {
-		@apply text-[40px] leading-[50px] font-medium;
-	}
+  h2 {
+    @apply text-[40px] leading-[50px] font-medium;
+  }
 
-	h3 {
-		@apply text-[32px] leading-10;
-	}
+  h3 {
+    @apply text-[32px] leading-10;
+  }
 
-	button {
-		@apply w-fit px-8 py-3 text-xl leading-6 font-medium border border-white rounded-full;
-	}
+  button {
+    @apply w-fit px-8 py-3 text-xl leading-6 font-medium border border-white rounded-full;
+  }
 }
 
 @layer components {
-	.prompts-button {
-		@apply px-10 py-5 mr-5 bg-transparent text-white border border-[#FFFFFF33] rounded-[9px];
+  .gradient-text {
+    background: linear-gradient(132.85deg, #f95a63 4.69%, #0b88d9 27.01%, #fae620 49.33%, #4cde55 57.7%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-		&.active {
-			@apply bg-green text-black border-none;
-		}
-	}
+  .prompts-button {
+    @apply px-10 py-5 mr-5 bg-transparent text-white border border-[#FFFFFF33] rounded-[9px];
 
-	.browse-button {
-		@apply px-10 py-4 bg-yellow text-dark-blue;
-	}
+    &.active {
+      @apply bg-green text-black border-none;
+    }
+  }
 
-	.slider-button {
-		@apply flex items-center justify-center w-10 h-10 p-0 bg-transparent text-white border hover:bg-white hover:text-black;
-	}
+  .browse-button {
+    @apply px-10 py-4 bg-yellow text-dark-blue;
+  }
 
-	.prompts-swiper-action {
-		@apply w-full mb-20;
+  .slider-button {
+    @apply flex items-center justify-center w-10 h-10 p-0 bg-transparent text-white border hover:bg-white hover:text-black;
+  }
 
-		& > div {
-			@apply flex mb-9 justify-between;
+  .prompts-swiper-action {
+    @apply w-full mb-20;
 
-			& > div {
-				@apply flex items-center gap-x-3;
+    & > div {
+      @apply flex mb-9 justify-between;
 
-				& > button {
-					@apply slider-button;
-				}
-			}
-		}
-	}
+      & > div {
+        @apply flex items-center gap-x-3;
 
-	.blog {
-		@apply container flex gap-28 mx-auto mb-20;
+        & > button {
+          @apply slider-button;
+        }
+      }
+    }
+  }
 
-		& > img {
-			@apply border-8 border-[#FFFFFF66] rounded-[5px];
-		}
+  .blog {
+    @apply container flex gap-28 mx-auto mb-20;
 
-		& > div {
-			@apply flex flex-col;
+    & > img {
+      @apply border-8 border-[#FFFFFF66] rounded-[5px];
+    }
 
-			& > h2 {
-				@apply mb-5;
-			}
+    & > div {
+      @apply flex flex-col;
 
-			& > div {
-				@apply flex flex-col gap-3 mb-8;
-			}
+      & > h2 {
+        @apply mb-5;
+      }
 
-			& > button {
-				@apply bg-yellow text-dark-blue;
-			}
-		}
-	}
+      & > div {
+        @apply flex flex-col gap-3 mb-8;
+      }
+
+      & > button {
+        @apply bg-yellow text-dark-blue;
+      }
+    }
+  }
 }

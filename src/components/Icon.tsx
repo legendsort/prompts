@@ -8,6 +8,8 @@ const icons = {
   paperClip: dynamic(() => import('@@/icons/paper-clip.svg')),
   send: dynamic(() => import('@@/icons/send.svg')),
   check: dynamic(() => import('@@/icons/check.svg')),
+  eye: dynamic(() => import('@@/icons/eye.svg')),
+  tag: dynamic(() => import('@@/icons/tag.svg')),
   'right-arrow': dynamic(() => import('@@/icons/right-arrow.svg')),
 } as { [keys: string]: any };
 

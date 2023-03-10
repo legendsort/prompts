@@ -1,4 +1,4 @@
-import { Prompt, Tag, User, Message, IFilterSection } from '@/helpers/interface';
+import { Prompt, Tag, User, Message, IFilterSection, IPromptEngineer } from '@/helpers/interface';
 
 export const FilterSections: IFilterSection = {
   sortBy: {
@@ -598,5 +598,129 @@ export const diffusionPrompts: Prompt[] = [
     price: 3.99,
     tag: Tag.diffusion,
     image: '/mocks/diffusion4.png',
+  },
+];
+
+export const dallePromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/dalle1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle4.png',
+  },
+];
+
+export const midjourneyPromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/midjourney1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney4.png',
+  },
+];
+
+export const diffusionPromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/diffusion1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion4.png',
+  },
+];
+
+export const gpt3PromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/gpt1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt4.png',
   },
 ];

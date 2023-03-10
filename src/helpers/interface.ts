@@ -21,6 +21,14 @@ export type Prompt = {
   rating?: number;
 };
 
+export type IPromptEngineer = {
+  engineerId: string;
+  avatar: string;
+  image: string;
+  viewer: string;
+  tag: string;
+};
+
 export type TagData = {
   position: TagPosition;
   image: string;
