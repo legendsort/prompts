@@ -360,6 +360,24 @@ export const trendingPrompts: Prompt[] = [
     tag: Tag.midjourney,
     image: '/mocks/featured8.png',
   },
+  {
+    title: 'Retro Neon Signs',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured1.png',
+  },
+  {
+    title: 'Platform Game Level Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured2.png',
+  },
+  {
+    title: 'Chalk Board Style Illustrations',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/featured3.png',
+  },
 ];
 
 export const featuredPrompts: Prompt[] = [

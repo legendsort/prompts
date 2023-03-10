@@ -51,7 +51,7 @@ export default function Marketplace() {
         </div>
         <div id="trendingPrompts" className="flex flex-col pt-8 ">
           <h3 className="pb-8">Trending Prompts</h3>
-          <div className="grid grid-cols-4 gap-x-6 gap-y-8 mb-16">
+          <div className="grid grid-cols-5 gap-x-6 gap-y-8 mb-16">
             {trendingPrompts.map(({ title, price, tag, image }) => (
               <PromptCard key={title} title={title} price={price} tag={tag} image={image} />
             ))}
