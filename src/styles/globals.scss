@@ -25,6 +25,10 @@
 }
 
 @layer components {
+  .login-input {
+    @apply bg-[#FFFFFF4D] rounded-lg w-full py-3 px-3 text-gray-400 leading-tight mb-6;
+  }
+
   .gradient-text {
     background: linear-gradient(132.85deg, #f95a63 4.69%, #0b88d9 27.01%, #fae620 49.33%, #4cde55 57.7%);
     -webkit-background-clip: text;

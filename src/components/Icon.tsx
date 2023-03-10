@@ -10,6 +10,7 @@ const icons = {
   check: dynamic(() => import('@@/icons/check.svg')),
   eye: dynamic(() => import('@@/icons/eye.svg')),
   tag: dynamic(() => import('@@/icons/tag.svg')),
+  google: dynamic(() => import('@@/icons/google.svg')),
   'right-arrow': dynamic(() => import('@@/icons/right-arrow.svg')),
 } as { [keys: string]: any };
 
