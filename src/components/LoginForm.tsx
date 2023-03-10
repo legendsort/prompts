@@ -77,9 +77,9 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
           />
         </div>
         {isLogin ? (
-          <label>Forgot password?</label>
+          <label className="text-sm">Forgot password?</label>
         ) : (
-          <div className="flex gap-2">
+          <div className="flex gap-2 text-sm">
             <input type="checkbox"></input>
             <label>
               I agree with <span className="text-[#0B88D9]">Terms</span> and{' '}
@@ -94,22 +94,22 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
           {isLogin ? 'Log In' : 'Register'}
         </button>
         {isLogin ? (
-          <label className="text-center justify-center flex pt-4">
+          <label className="text-center justify-center text-sm flex pt-4">
             {"Don't have an account?"}
             <Link href={'/'} className="text-[#0B88D9]">
-              Create account
+              &nbsp;Create account
             </Link>
           </label>
         ) : (
-          <label className="text-center justify-center flex pt-4">
+          <label className="text-center justify-center text-sm flex pt-4">
             Already have an account?
             <Link href={'/'} className="text-[#0B88D9]">
-              Log in
+              &nbsp;Log in
             </Link>
           </label>
         )}
         <br />
-        <label className="text-center justify-center flex py-2">OR</label>
+        <label className="text-center justify-center text-sm flex py-2">OR</label>
         <button className="flex w-full bg-[#FFFFFF2A] hover:bg-green py-3 px-4 rounded-lg text-sm mb-8" type="submit">
           <div className="flex flex-row gap-3 jutify-center items-center mx-auto">
             <Icon>google</Icon>
