@@ -17,8 +17,18 @@ const Chat: NextPage = () => {
   const [users, setUsers] = useState([]);
   const [current, setCurrent] = useState({});
   const [messages, setMessages] = useState([]);
+  const [client, setClient] = useState('');
 
   const getMessages = async (roomId) => {
+    const room = await RoomService.find_room({ room_id: roomId });
+    if (room.error) return;
+    const clientId = room.data[0].user2;
+    setClient(clientId);
+    const client = await UserService.find({ id: clientId });
+    if (client.error) return;
+    setClient(client.data[0]);
+    const { data, error } = await MessageService.retrieve({ room_id: roomId });
+    setMessages(data);
     return [];
   };
 
@@ -32,16 +42,21 @@ const Chat: NextPage = () => {
     UserService.get_session().then(async (response) => {
       const { data, error } = response;
       if (error !== null) return;
+      if (!data.session) {
+        window.location.pathname = '/login';
+        return;
+      }
       const id = data.session.user.id;
+
       if (error !== null) {
         window.location.pathname = '/login';
         return;
       }
       const res = await UserService.find({ id });
-      setCurrent(res.data);
+      setCurrent(res.data[0]);
       getMessages(roomId);
     });
-  }, []);
+  }, [roomId]);
 
   return (
     <div className="bg-[#222236] w-full rounded-lg overflow-auto">
@@ -70,23 +85,34 @@ const Chat: NextPage = () => {
             <div className="flex flex-row gap-4 items-center">
               <Image src="/avatars/avatar1.png" alt="avatar" width="41" height="41" className="rounded-full" />
               <div className="flex flex-col text-sm text-black">
-                <p className="font-bold">John Dae</p>
-                <p className="text-xs">Typing...</p>
+                <p className="font-bold">{client.username}</p>
+                <p className="text-xs">{client.status ? 'Typing...' : ''} </p>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-6 px-4">
-            {messages.map(({ avatar, message, timeStamp, type }, index) =>
-              type === 'other' ? (
-                <div key={index} className="mr-auto">
-                  <ChatFrame avatar={avatar} message={message} timeStamp={timeStamp} type={type} />
-                </div>
-              ) : (
-                <div key={index} className="ml-auto">
-                  <ChatFrame avatar={avatar} message={message} timeStamp={timeStamp} type={type} />
-                </div>
-              ),
-            )}
+            {messages &&
+              messages.map(({ avatar_url, content, created_at, sender_id, receiver_id }, index) =>
+                current.id === sender_id ? (
+                  <div key={index} className="ml-auto">
+                    <ChatFrame
+                      avatar={current.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ) : (
+                  <div key={index} className="mr-auto">
+                    <ChatFrame
+                      avatar={client.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ),
+              )}
           </div>
           <div className="grow flex bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">
             <input

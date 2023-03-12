@@ -9,6 +9,7 @@ interface chartFrameProps {
 }
 
 const ChatFrame = ({ avatar, message, timeStamp, type }: chartFrameProps) => {
+  console.log(type);
   return (
     <div
       className={clsx('flex items-start gap-4', { 'flex-row': type === 'other', 'flex-row-reverse': type !== 'other' })}
@@ -22,8 +23,8 @@ const ChatFrame = ({ avatar, message, timeStamp, type }: chartFrameProps) => {
       >
         <div
           className={clsx('rounded-[4px] w-fit text-white max-w-[300px] py-2 px-4 border-black-2 ', {
-            'bg-[#515151] shadow-[0px_22px_60px_rgba(0, 0, 0, 0.04)]': type === 'other',
-            'bg-[#37B649] bg-opacity-30 shadow-[0px_22px_60px_-14px rgba(0, 0, 0, 0.04)]': type !== 'other',
+            'bg-[#515151] shadow-[0px_22px_60px_rgba(0, 0, 0, 0.04)]': type === 'me',
+            'bg-[#37B649] bg-opacity-30 shadow-[0px_22px_60px_-14px rgba(0, 0, 0, 0.04)]': type !== 'me',
           })}
         >
           <p>{message}</p>

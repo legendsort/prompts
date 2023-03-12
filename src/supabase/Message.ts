@@ -12,13 +12,16 @@ const create = async ({ room_id, sender_id, receiver_id, content }: any) => {
   return response;
 };
 
-const retrieve = async ({ room_id, page_size, page }: any) => {
+const retrieve = async ({ room_id, page_size = 10, page = 1 }: any) => {
+  console.log(room_id);
   const { data, error } = await supabase
     .from('message')
     .select('id, sender_id, receiver_id, room_id, content, created_at')
-    .eq('room_id', room_id)
-    .limit(page_size)
-    .range((page - 1) * page_size, page * page_size - 1);
+    .eq('room_id', room_id);
+  // .limit(page_size)
+  // .range((page - 1) * page_size, page * page_size - 1);
+  console.log(data);
+  console.log(error);
   return { data, error };
 };
 
