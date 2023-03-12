@@ -7,7 +7,7 @@ import React, { useState, useRef, useEffect, RefObject } from 'react';
 import UserService from '../../supabase/User';
 import MessageService from '../../supabase/Message';
 import RoomService from '../../supabase/Room';
-
+import supabase from '@/utils/supabase';
 import { useRouter } from 'next/router';
 
 const Chat: NextPage = () => {
@@ -18,6 +18,8 @@ const Chat: NextPage = () => {
   const [current, setCurrent] = useState({});
   const [messages, setMessages] = useState([]);
   const [client, setClient] = useState('');
+
+  const inputRef = useRef();
 
   const getMessages = async (roomId) => {
     const room = await RoomService.find_room({ room_id: roomId });
@@ -33,6 +35,22 @@ const Chat: NextPage = () => {
   };
 
   useEffect(() => {
+    const channel = supabase
+      .channel('message')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'message',
+          filter: 'room_id=eq.' + roomId,
+        },
+        (payload) => {
+          getMessages(roomId);
+        },
+      )
+      .subscribe();
+
     UserService.find_all().then((response) => {
       const { data, error } = response;
       if (error !== null) return;
@@ -57,6 +75,21 @@ const Chat: NextPage = () => {
       getMessages(roomId);
     });
   }, [roomId]);
+
+  const handleSend = () => {
+    const message = inputRef.current.value;
+    if (message === '') return;
+    MessageService.create({
+      room_id: roomId,
+      sender_id: current.id,
+      receiver_id: client.id,
+      content: message,
+    }).then(({ data, error }) => {
+      if (error === null) {
+        inputRef.current.value = '';
+      }
+    });
+  };
 
   return (
     <div className="bg-[#222236] w-full rounded-lg overflow-auto">
@@ -116,6 +149,7 @@ const Chat: NextPage = () => {
           </div>
           <div className="grow flex bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">
             <input
+              ref={inputRef}
               className="grow bg-[#515151] outline-none placeholder:text-gray-300 placeholder:text-sm placeholder:leading-4"
               type="text"
               placeholder="Type your message here..."
@@ -127,7 +161,10 @@ const Chat: NextPage = () => {
               <div className="flex bg-white rounded-full w-[25px] h-[25px] justify-center items-center">
                 <Icon>paperClip</Icon>
               </div>
-              <div className="flex bg-yellow rounded-full px-3 py-2 justify-center items-center gap-2">
+              <div
+                onClick={handleSend}
+                className="cursor-pointer flex bg-yellow rounded-full px-3 py-2 justify-center items-center gap-2"
+              >
                 <Icon>send</Icon>
                 <p className="text-black font-bold">Send</p>
               </div>
