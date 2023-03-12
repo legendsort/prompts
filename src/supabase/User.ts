@@ -44,8 +44,26 @@ const find = async (username: any) => {
   };
 };
 
+/**
+ *
+ * @param username username
+ * @returns schema {data: [{id, username}], error: error}
+ */
+
+const find_all = async (username: any) => {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, username, nickname, avatar_url')
+    .like('username', `%${username}%`);
+  return {
+    data,
+    error,
+  };
+};
+
 export default {
   sign_in,
   sign_up,
   find,
+  find_all,
 };

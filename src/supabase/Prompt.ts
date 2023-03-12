@@ -11,7 +11,7 @@ const create = async ({ tag, price, image }: any) => {
   return response;
 };
 
-const findAll = async (tag: any) => {
+const find_all = async (tag: any) => {
   const { data, error } = await supabase.from('prompt').select('id, tag, price, image').like('tag', `%${tag}%`);
 
   return {
@@ -33,5 +33,5 @@ const find = async (tag: any, page_size = 10, page = 1) => {
 export default {
   create,
   find,
-  findAll,
+  find_all,
 };
