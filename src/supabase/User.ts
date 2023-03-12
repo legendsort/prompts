@@ -50,11 +50,8 @@ const find = async (username: any) => {
  * @returns schema {data: [{id, username}], error: error}
  */
 
-const find_all = async (username: any) => {
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('id, username, nickname, avatar_url')
-    .like('username', `%${username}%`);
+const find_all = async () => {
+  const { data, error } = await supabase.from('profiles').select('id, username, nickname, avatar_url');
   return {
     data,
     error,

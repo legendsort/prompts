@@ -10,6 +10,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ['i.pravatar.cc'],
+  },
 };
 
 module.exports = nextConfig;

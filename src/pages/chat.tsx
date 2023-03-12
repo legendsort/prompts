@@ -2,13 +2,22 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import Icon from '@/components/Icon';
 import User from '@/components/User';
-import { users, messages } from '@/helpers/mock';
+import { messages } from '@/helpers/mock';
 import ChatFrame from '@/components/ChatFrame';
 import React, { useState, useRef, useEffect, RefObject } from 'react';
 import UserService from '../supabase/User';
 
 const Chat: NextPage = () => {
-  const users = useState([]);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const response = UserService.find_all().then((response) => {
+      const { data, error } = response;
+      console.log(data);
+      if (error !== null) return;
+
+      setUsers(data);
+    });
+  });
 
   return (
     <div className="bg-[#222236] w-full rounded-lg overflow-auto">
