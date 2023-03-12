@@ -7,9 +7,16 @@ const SignIn = () => {
   const handleClick = async (e: any) => {
     e.preventDefault();
 
-    // test for user service find
-    const response = await UserService.find('Sortoite');
+    const response = await UserService.sign_up({
+      email: 'sortoite@gmail.com',
+      password: '123123',
+      username: 'Timo ',
+    });
     console.log(response);
+
+    // test for user service find
+    // const response = await UserService.find('Sortoite');
+    // console.log(response);
 
     // const prompt = {
     //   "tag": "test s",

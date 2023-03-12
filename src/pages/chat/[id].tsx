@@ -22,7 +22,7 @@ const Chat: NextPage = () => {
   const getMessages = async (roomId) => {
     const room = await RoomService.find_room({ room_id: roomId });
     if (room.error) return;
-    const clientId = room.data[0].user2;
+    const clientId = room.data[0].user2 === current.id ? room.data[0].user1 : room.data[0].user2;
     setClient(clientId);
     const client = await UserService.find({ id: clientId });
     if (client.error) return;
@@ -83,7 +83,7 @@ const Chat: NextPage = () => {
         <div className="col-span-8 border-r-2 border-[#FFFFFF] border-opacity-10">
           <div className="flex items-center bg-[#4CDE55] h-[60px] w-full px-4 mb-6">
             <div className="flex flex-row gap-4 items-center">
-              <Image src="/avatars/avatar1.png" alt="avatar" width="41" height="41" className="rounded-full" />
+              <Image src={client.avatar_url} alt="avatar" width="41" height="41" className="rounded-full" />
               <div className="flex flex-col text-sm text-black">
                 <p className="font-bold">{client.username}</p>
                 <p className="text-xs">{client.status ? 'Typing...' : ''} </p>
