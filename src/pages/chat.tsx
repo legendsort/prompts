@@ -9,15 +9,28 @@ import UserService from '../supabase/User';
 
 const Chat: NextPage = () => {
   const [users, setUsers] = useState([]);
+  const [current, setCurrent] = useState({});
   useEffect(() => {
-    const response = UserService.find_all().then((response) => {
+    // console.log(user);
+    UserService.find_all().then((response) => {
       const { data, error } = response;
-      console.log(data);
       if (error !== null) return;
-
       setUsers(data);
     });
-  });
+
+    UserService.get_session().then(async (response) => {
+      const { data, error } = response;
+      if (error !== null) return;
+      const id = data.session.user.id;
+      const user = await UserService.find({ id });
+      if (error !== null) {
+        window.location.pathname = '/login';
+        return;
+      }
+      console.log(user.data);
+      setCurrent(user.data);
+    });
+  }, []);
 
   return (
     <div className="bg-[#222236] w-full rounded-lg overflow-auto">

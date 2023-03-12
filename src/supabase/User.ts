@@ -1,5 +1,10 @@
 import supabase from '../utils/supabase';
 
+const get_session = async () => {
+  const { data, error } = await supabase.auth.getSession();
+  return { data, error };
+};
+
 const sign_up = async ({ email, password, username, avatar_url }: any) => {
   const user = { email, password, username, avatar_url };
   const { data, error } = await supabase.auth.signUp({
@@ -36,8 +41,8 @@ const sign_in = async ({ email, password }: any) => {
  * @returns schema {data: [{id, username}], error: error}
  */
 
-const find = async (username: any) => {
-  const { data, error } = await supabase.from('profiles').select('id, username').eq('username', username);
+const find = async ({ id }: any) => {
+  const { data, error } = await supabase.from('profiles').select('id, username, nickname, avatar_url').eq('id', id);
   return {
     data,
     error,
@@ -63,4 +68,5 @@ export default {
   sign_up,
   find,
   find_all,
+  get_session,
 };

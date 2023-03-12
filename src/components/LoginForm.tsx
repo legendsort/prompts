@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import clsx from 'classnames';
 import { useState, useEffect } from 'react';
 import Icon from '@/components/Icon';
+import UserService from '../supabase/User';
 
 export type FormData = {
   name: string;
@@ -23,13 +24,11 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
   } = useForm<FormData>();
   const onSubmit = handleSubmit(async (data) => {
     try {
-      const response = await window.fetch('/api/login', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
-      if (response.status === 200) {
+      UserService.sign_in(data).then((response) => {
+        const { data, error } = response;
+        if (error) throw 'Error in Login';
         window.location.pathname = '/marketplace';
-      }
+      });
     } catch (e) {
       console.log('SOME ERROR HAPPENED', e);
     }
