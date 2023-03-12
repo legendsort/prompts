@@ -4,7 +4,12 @@ import Icon from '@/components/Icon';
 import User from '@/components/User';
 import { users, messages } from '@/helpers/mock';
 import ChatFrame from '@/components/ChatFrame';
+import React, { useState, useRef, useEffect, RefObject } from 'react';
+import UserService from '../supabase/User';
+
 const Chat: NextPage = () => {
+  const users = useState([]);
+
   return (
     <div className="bg-[#222236] w-full rounded-lg overflow-auto">
       <div className="grid grid-cols-12 h-full">
@@ -20,8 +25,8 @@ const Chat: NextPage = () => {
               />
             </div>
             <div className="space-y-6">
-              {users.map(({ avatar, name, nickName }, index) => (
-                <User key={index} avatar={avatar} name={name} nickName={nickName} />
+              {users.map(({ avatar_url, username, nickname }, index) => (
+                <User key={index} avatar={avatar_url} name={username} nickName={nickname} />
               ))}
             </div>
           </div>
