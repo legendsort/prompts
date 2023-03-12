@@ -2,16 +2,27 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import Icon from '@/components/Icon';
 import User from '@/components/User';
-import { messages } from '@/helpers/mock';
 import ChatFrame from '@/components/ChatFrame';
 import React, { useState, useRef, useEffect, RefObject } from 'react';
-import UserService from '../supabase/User';
+import UserService from '../../supabase/User';
+import MessageService from '../../supabase/Message';
+import RoomService from '../../supabase/Room';
+
+import { useRouter } from 'next/router';
 
 const Chat: NextPage = () => {
+  const router = useRouter();
+  const roomId = router.query.id;
+
   const [users, setUsers] = useState([]);
   const [current, setCurrent] = useState({});
+  const [messages, setMessages] = useState([]);
+
+  const getMessages = async (roomId) => {
+    return [];
+  };
+
   useEffect(() => {
-    // console.log(user);
     UserService.find_all().then((response) => {
       const { data, error } = response;
       if (error !== null) return;
@@ -22,13 +33,13 @@ const Chat: NextPage = () => {
       const { data, error } = response;
       if (error !== null) return;
       const id = data.session.user.id;
-      const user = await UserService.find({ id });
       if (error !== null) {
         window.location.pathname = '/login';
         return;
       }
-      console.log(user.data);
-      setCurrent(user.data);
+      const res = await UserService.find({ id });
+      setCurrent(res.data);
+      getMessages(roomId);
     });
   }, []);
 
