@@ -12,7 +12,7 @@ const create = async ({ room_id, sender_id, receiver_id, content }: any) => {
   return response;
 };
 
-const retrieve = async ({ room_id, page_size = 30, page = 1 }: any) => {
+const retrieve = async ({ room_id, page_size = 10, page = 1 }: any) => {
   console.log(room_id);
   const { data, error } = await supabase
     .from('message')

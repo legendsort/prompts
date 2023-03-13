@@ -105,9 +105,16 @@ const Chat: NextPage = () => {
                 placeholder="Search Users..."
               />
             </div>
-            <div className="space-y-6">
-              {users.map(({ avatar_url, username, nickname }, index) => (
-                <User key={index} avatar={avatar_url} name={username} nickName={nickname} />
+            <div className="space-y-6 cursor-pointer">
+              {users.map(({ avatar_url, username, nickname, id }, index) => (
+                <User
+                  currentId={current.id}
+                  clientId={id}
+                  key={index}
+                  avatar={avatar_url}
+                  name={username}
+                  nickName={nickname}
+                />
               ))}
             </div>
           </div>

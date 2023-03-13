@@ -5,8 +5,13 @@ const create = async ({ user1, user2 }: any) => {
     user1,
     user2,
   };
-  const response = await supabase.from('room').insert(room);
-  return response;
+  let response = await supabase.from('room').insert(room);
+  response = await find({ user1, user2 });
+  if (response.error) return;
+  if (response.data?.length > 0) {
+    return response.data[0].id;
+  }
+  return null;
 };
 
 const find_all = async ({ user }: any) => {
@@ -15,7 +20,10 @@ const find_all = async ({ user }: any) => {
 };
 
 const find = async ({ user1, user2 }: any) => {
-  const { data, error } = await supabase.from('room').select('id, user1, user2').eq('user1', user1).eq('user2', user2);
+  const { data, error } = await supabase
+    .from('room')
+    .select('id, user1, user2')
+    .or(`and(user1.eq.${user1},user2.eq.${user2}),and(user1.eq.${user2},user2.eq.${user1})`);
   return { data, error };
 };
 
