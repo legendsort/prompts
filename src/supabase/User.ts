@@ -78,7 +78,7 @@ const find_by_name = async ({ username }: any) => {
   const { data, error } = await supabase
     .from("profiles")
     .select("id, username, nickname, avatar_url")
-    .eq("username", username);
+    .like("username", `%${username}%`);
 
   return {
     data,

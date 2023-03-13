@@ -117,7 +117,7 @@ const Chat: NextPage = () => {
   };
 
   return (
-    <div className="bg-[#222236] w-full rounded-lg h-[840px]">
+    <div className="bg-[#222236] w-full rounded-lg h-">
       <div className="grid grid-cols-12 h-screen max-h-[840px]">
         <div className="col-span-2 border-r-2 border-[#FFFFFF] border-opacity-10 overflow-auto">
           <div className="flex flex-col px-4 py-4 space-y-2">

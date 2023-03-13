@@ -28,7 +28,7 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
         UserService.sign_in(data).then((response) => {
           const { data, error } = response;
           if (error) throw "Error in Login";
-          window.location.pathname = "/marketplace";
+          window.location.pathname = "/chat";
         });
       } else {
         UserService.sign_up(data).then((response) => {

@@ -6,9 +6,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
     <div className="relative">
       <div className="absolute opacity-10 left-0 top-0 w-full h-full bg-[url('/back.jpeg')]" />
       <div className="relative flex flex-col min-h-screen">
-        <Header />
+        {/* <Header /> */}
         <div className="grow flex flex-col">{children}</div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
