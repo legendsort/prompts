@@ -39,8 +39,8 @@ const sign_in = async ({ email, password }: any) => {
 
 /**
  *
- * @param username username
- * @returns schema {data: [{id, username}], error: error}
+ * @param id id
+ * @returns schema {data: [{id, username, nickname, avatar_url}], error: error}
  */
 
 const find = async ({ id }: any) => {
@@ -69,12 +69,30 @@ const find_all = async () => {
   };
 };
 
+/**
+ *
+ * @param username username
+ * @returns schema {data: [{id, username}], error: error}
+ */
+const find_by_name = async ({ username }: any) => {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id, username, nickname, avatar_url")
+    .eq("username", username);
+
+  return {
+    data,
+    error,
+  };
+};
+
 const User = {
   sign_in,
   sign_up,
   find,
   find_all,
   get_session,
+  find_by_name,
 };
 
 export default User;
