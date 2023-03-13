@@ -31,7 +31,7 @@ const SellPrompt = ({ handleClick }: SellPromptProps) => {
         </div>
         <button
           className="bg-yellow text-black border-2 border-white rounded-full px-4 py-2"
-          onClick={handleClick('next')}
+          onClick={() => handleClick('next')}
         >
           Sell a Prompt
         </button>
