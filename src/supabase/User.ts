@@ -5,18 +5,20 @@ const get_session = async () => {
   return { data, error };
 };
 
-const sign_up = async ({ email, password, username, avatar_url }: any) => {
-  const user = { email, password, username, avatar_url };
+const sign_up = async ({ email, password, username }: any) => {
+  const user = { email, password, username };
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         username: username,
-        avatar_url: avatar_url,
       },
     },
   });
+  if (error === null) {
+    alert('Please check your email');
+  }
   return {
     data,
     error,

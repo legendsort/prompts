@@ -24,11 +24,19 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
   } = useForm<FormData>();
   const onSubmit = handleSubmit(async (data) => {
     try {
-      UserService.sign_in(data).then((response) => {
-        const { data, error } = response;
-        if (error) throw 'Error in Login';
-        window.location.pathname = '/marketplace';
-      });
+      if (isLogin) {
+        UserService.sign_in(data).then((response) => {
+          const { data, error } = response;
+          if (error) throw 'Error in Login';
+          window.location.pathname = '/marketplace';
+        });
+      } else {
+        UserService.sign_up(data).then((response) => {
+          const { data, error } = response;
+          if (error) throw 'Error in Register';
+          window.location.pathname = '/login';
+        });
+      }
     } catch (e) {
       console.log('SOME ERROR HAPPENED', e);
     }
@@ -60,7 +68,7 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
         {isLogin !== true && (
           <div className="flex flex-col gap-y-2">
             <label>Name</label>
-            <input className="login-input mb-4 focus:outline-none focus:shadow-outline " {...register('name')} />
+            <input className="login-input mb-4 focus:outline-none focus:shadow-outline " {...register('username')} />
           </div>
         )}
         <div className="flex flex-col gap-y-2">
