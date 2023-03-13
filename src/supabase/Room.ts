@@ -41,9 +41,11 @@ const find_room = async ({ room_id }: any) => {
   return { data, error };
 };
 
-export default {
+const Room = {
   create,
   find,
   find_all,
   find_room,
 };
+
+export default Room;

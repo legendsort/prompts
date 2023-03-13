@@ -33,8 +33,10 @@ const find = async (tag: any, page_size = 10, page = 1) => {
   return { data, error };
 };
 
-export default {
+const Prompt = {
   create,
   find,
   find_all,
 };
+
+export default Prompt;

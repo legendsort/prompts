@@ -28,7 +28,8 @@ const retrieve = async ({ room_id, page_size = 10, page = 1 }: any) => {
   return { data, error };
 };
 
-export default {
+const Message = {
   create,
   retrieve,
 };
+export default Message;

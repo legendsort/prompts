@@ -36,25 +36,25 @@ const Chat: NextPage = () => {
 
   const inputRef: RefObject<any> = useRef(null);
 
-  const getMessages = async (roomId: string) => {
-    const room = await RoomService.find_room({ room_id: roomId });
-    if (room.error) return;
-    if (room.data === null || room.data.length === 0) return [];
-    const clientId =
-      room.data[0]?.user2 === current.id
-        ? room.data[0]?.user1
-        : room.data[0]?.user2;
-    setClient(clientId);
-    const client = await UserService.find({ id: clientId });
-    if (client.error) return;
-    if (client.data === null) return;
-    setClient(client.data[0]);
-    const { data } = await MessageService.retrieve({ room_id: roomId });
-    setMessages(data);
-    return [];
-  };
-
   useEffect(() => {
+    const getMessages = async (roomId: string) => {
+      const room = await RoomService.find_room({ room_id: roomId });
+      if (room.error) return;
+      if (room.data === null || room.data.length === 0) return [];
+      const clientId =
+        room.data[0]?.user2 === current.id
+          ? room.data[0]?.user1
+          : room.data[0]?.user2;
+      setClient(clientId);
+      const client = await UserService.find({ id: clientId });
+      if (client.error) return;
+      if (client.data === null) return;
+      setClient(client.data[0]);
+      const { data } = await MessageService.retrieve({ room_id: roomId });
+      setMessages(data);
+      return [];
+    };
+
     const channel = supabase
       .channel("message")
       .on(
@@ -94,7 +94,7 @@ const Chat: NextPage = () => {
       setCurrent(res.data[0]);
       getMessages(roomId as any);
     });
-  }, [roomId]);
+  }, [roomId, current.id]);
 
   const handleSend = () => {
     const message: any = inputRef.current?.value;
