@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const PromptFile = () => {
-  const [promptFile, setPromptFile] = useState('');
+  const [promptFile, setPromptFile] = useState("");
   const handleChange = (e: any) => {
-    console.log('Miracle textarea', e.target.value);
+    console.log("Miracle textarea", e.target.value);
     setPromptFile(e.target.value);
   };
   return (
@@ -12,10 +12,15 @@ const PromptFile = () => {
         <div className="flex flex-col items-start justify-center">
           <h3>Prompt File</h3>
           <p>
-            Copy and paste the JSON GPT-3 prompt file from the OpenAI playground. Ensure any editable parts of your
-            prompt are indicated by [square brackets].
+            Copy and paste the JSON GPT-3 prompt file from the OpenAI
+            playground. Ensure any editable parts of your prompt are indicated
+            by [square brackets].
           </p>
-          <p>{"Watch our 19 second guide to the right (below on mobile) if you're stuck."}</p>
+          <p>
+            {
+              "Watch our 19 second guide to the right (below on mobile) if you're stuck."
+            }
+          </p>
         </div>
         <div className="w-full flex flex-col gap-y-2">
           <label>Prompt File</label>
@@ -50,8 +55,13 @@ const PromptFile = () => {
             </div>
             <div className="w-full flex flex-col gap-y-2">
               <label>Engine</label>
-              <label className="italic text-gray-400">What GPT3 Engine does this prompt use?</label>
-              <select className="login-input rounded-md outline-none text-gray-400" placeholder="Select Prompts Type">
+              <label className="italic text-gray-400">
+                What GPT3 Engine does this prompt use?
+              </label>
+              <select
+                className="login-input rounded-md outline-none text-gray-400"
+                placeholder="Select Prompts Type"
+              >
                 <option>text-davinci-003</option>
               </select>
             </div>
@@ -66,8 +76,9 @@ const PromptFile = () => {
             <div className="w-full flex flex-col gap-y-2">
               <label>Preview Output</label>
               <label className="italic text-gray-400">
-                A preview output generated this prompt to demonstrate to a potential buyer what your prompt does. Do not
-                include your input prompt.
+                A preview output generated this prompt to demonstrate to a
+                potential buyer what your prompt does. Do not include your input
+                prompt.
               </label>
               <input className="login-input mb-4 focus:outline-none focus:shadow-outline " />
             </div>

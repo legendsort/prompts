@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { StepperContext } from '@/contexts/StepperContext';
+import { useContext } from "react";
+import { StepperContext } from "@/contexts/StepperContext";
 
 interface SellPromptProps {
   handleClick: any;
@@ -15,29 +15,36 @@ const SellPrompt = ({ handleClick }: SellPromptProps) => {
     <div className="w-full flex flex-row px-10 pb-10 ">
       <div className="flex flex-col w-1/2 px-32 gap-y-4">
         <h2>
-          Start Selling your<span className="gradient-text">&nbsp;Own Prompts</span>
+          Start Selling your
+          <span className="gradient-text">&nbsp;Own Prompts</span>
         </h2>
         <div className="flex flex-col leading-8 text-gray-400 text-xl">
           <p className="text-left">
-            PromptBase is a marketplace for DALL.E, Midjourney, Stable Diffusion and GPT-3 Prompts
+            PromptBase is a marketplace for DALL.E, Midjourney, Stable Diffusion
+            and GPT-3 Prompts
           </p>
           <p className="text-left">
-            You can sell your own prompts on PromptBase and start earning from your Prompt Engineering skills
+            You can sell your own prompts on PromptBase and start earning from
+            your Prompt Engineering skills
           </p>
           <p className="text-left">
-            {"If your Prompt is approved, you'll keep 80% of revenue from every sale of your prompt"}
+            {
+              "If your Prompt is approved, you'll keep 80% of revenue from every sale of your prompt"
+            }
           </p>
           <p className="text-left">Get selling in just 2 minutes.</p>
         </div>
         <button
           className="bg-yellow text-black border-2 border-white rounded-full px-4 py-2"
-          onClick={() => handleClick('next')}
+          onClick={() => handleClick("next")}
         >
           Sell a Prompt
         </button>
         <p className="text-gray-400 text-left">
-          Please read our <span className="text-yellow">prompt submission guidlines</span>before submitting your prompt
-          so you understand what prompts can be sold on <span className="text-yellow">Prompts</span>
+          Please read our{" "}
+          <span className="text-yellow">prompt submission guidlines</span>before
+          submitting your prompt so you understand what prompts can be sold on{" "}
+          <span className="text-yellow">Prompts</span>
         </p>
       </div>
       <div className="flex w-1/2">

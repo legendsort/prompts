@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import LoginForm from '../LoginForm';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import LoginForm from "../LoginForm";
 
 const Account = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,7 +11,9 @@ const Account = () => {
   return (
     <div className="w-full flex flex-row gap-20 items-center">
       <div className="flex flex-col">
-        <h3 className="pt-16 py-10 text-cener">{isLogin ? 'Sign In' : 'Create An Account'}</h3>
+        <h3 className="pt-16 py-10 text-cener">
+          {isLogin ? "Sign In" : "Create An Account"}
+        </h3>
         <LoginForm onChildData={handleChildData} />
       </div>
       <Image src="/steps/account.png" alt="account" width="400" height="425" />

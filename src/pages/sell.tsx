@@ -1,18 +1,18 @@
-import Stepper from '@/components/Stepper';
+import Stepper from "@/components/Stepper";
 // import { Stepper } from 'react-form-stepper';
-import StepperControl from '@/components/StepperControl';
-import { NextPage } from 'next';
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import SellPrompt from '@/components/steps/SellPrompt';
-import Account from '@/components/steps/Account';
-import Final from '@/components/steps/Final';
-import GetPaid from '@/components/steps/GetPaid';
-import PromptFile from '@/components/steps/PromptFile';
-import PromptFile2 from '@/components/steps/PromptFile';
-import PromptDetail from '@/components/steps/PromptDetail';
-import { StepperContext } from '@/contexts/StepperContext';
-import StepAction from '@/components/StepAction';
+import StepperControl from "@/components/StepperControl";
+import { NextPage } from "next";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import SellPrompt from "@/components/steps/SellPrompt";
+import Account from "@/components/steps/Account";
+import Final from "@/components/steps/Final";
+import GetPaid from "@/components/steps/GetPaid";
+import PromptFile from "@/components/steps/PromptFile";
+import PromptFile2 from "@/components/steps/PromptFile";
+import PromptDetail from "@/components/steps/PromptDetail";
+import { StepperContext } from "@/contexts/StepperContext";
+import StepAction from "@/components/StepAction";
 
 // const SellPrompt = dynamic(() => import('@/components/steps/SellPrompt'), {
 //     ssr: true,
@@ -20,9 +20,16 @@ import StepAction from '@/components/StepAction';
 
 const Sell: NextPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [userData, setUserData] = useState('');
+  const [userData, setUserData] = useState("");
   const [finalData, setFinalData] = useState([]);
-  const steps = ['Sell a Prompt', 'Create An Account', 'Prompt Details', 'Prompt File', 'Get Paid', 'Thank you'];
+  const steps = [
+    "Sell a Prompt",
+    "Create An Account",
+    "Prompt Details",
+    "Prompt File",
+    "Get Paid",
+    "Thank you",
+  ];
 
   const displayStep = (step: number) => {
     switch (step) {
@@ -43,13 +50,17 @@ const Sell: NextPage = () => {
 
   const handleClick = (direction: string) => {
     let newStep = currentStep;
-    direction === 'next' ? newStep++ : newStep--;
+    direction === "next" ? newStep++ : newStep--;
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
   return (
     <div className="grow flex flex-col justify-center items-center py-14 px-20">
       {/* <Stepper steps={steps} currentStep={currentStep} /> */}
-      <StepAction className="w-2/3" current={currentStep} total={steps.length} />
+      <StepAction
+        className="w-2/3"
+        current={currentStep}
+        total={steps.length}
+      />
       <div className="my-10 p-10">
         <StepperContext.Provider
           value={
@@ -65,7 +76,11 @@ const Sell: NextPage = () => {
         </StepperContext.Provider>
       </div>
       {currentStep !== steps.length && currentStep !== 1 && (
-        <StepperControl handleClick={handleClick} currentStep={currentStep} steps={steps} />
+        <StepperControl
+          handleClick={handleClick}
+          currentStep={currentStep}
+          steps={steps}
+        />
       )}
     </div>
   );
