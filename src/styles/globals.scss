@@ -19,6 +19,10 @@
     @apply text-[32px] leading-10;
   }
 
+  p {
+    @apply leading-[26px] opacity-80 text-center;
+  }
+
   button {
     @apply w-fit px-8 py-3 text-xl leading-6 font-medium border border-white rounded-full;
   }
