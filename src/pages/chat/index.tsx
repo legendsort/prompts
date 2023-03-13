@@ -177,30 +177,6 @@ const Chat: NextPage = () => {
                   )
               )}
           </div>
-          {/* <div className="absolute bottom-[20px] w-[1230px] grow flex bg-[#515151] px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4 ">
-            <input
-              onKeyUp={onKeyUp}
-              ref={inputRef}
-              className="grow bg-[#515151] outline-none placeholder:text-gray-300 placeholder:text-sm placeholder:leading-4"
-              type="text"
-              placeholder="Type your message here..."
-            />
-            <div className="flex flex-row gap-2 items-center">
-              <div className="flex bg-white rounded-full w-[25px] h-[25px] justify-center items-center">
-                <Icon>emoti</Icon>
-              </div>
-              <div className="flex bg-white rounded-full w-[25px] h-[25px] justify-center items-center">
-                <Icon>paperClip</Icon>
-              </div>
-              <div
-                onClick={handleSend}
-                className="cursor-pointer flex bg-yellow rounded-full px-3 py-2 justify-center items-center gap-2"
-              >
-                <Icon>send</Icon>
-                <p className="text-black font-bold">Send</p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

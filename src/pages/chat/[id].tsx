@@ -126,7 +126,7 @@ const Chat: NextPage = () => {
             <div className="grow flex bg-[#515151] items-center px-4 py-2 mr-9 border-[0.5px] border-[#FFFFFF99] rounded-full">
               <Icon>search</Icon>
               <input
-                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4"
+                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4 w-[100px]"
                 type="text"
                 placeholder="Search Users..."
               />
@@ -146,7 +146,7 @@ const Chat: NextPage = () => {
           </div>
         </div>
 
-        <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10">
+        <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10 overflow-auto h-[760px]">
           <div className="flex items-center bg-[#4CDE55] h-[60px] w-full px-4 mb-6">
             <div className="flex flex-row gap-4 items-center">
               <Image
