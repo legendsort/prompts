@@ -118,11 +118,11 @@ const Chat: NextPage = () => {
   };
 
   return (
-    <div className="bg-[#222236] w-full rounded-lg overflow-auto">
-      <div className="grid grid-cols-12 h-screen">
-        <div className="col-span-2 border-r-2 border-[#FFFFFF] border-opacity-10 h-full">
+    <div className="bg-[#222236] w-full rounded-lg  relative h-[840px]">
+      <div className="grid grid-cols-12 h-screen max-h-[840px] relative">
+        <div className="col-span-2 border-r-2 border-[#FFFFFF] border-opacity-10 h-full overflow-auto">
           <div className="flex flex-col px-4 py-4 space-y-2">
-            <p className="text-gray-400">InMail</p>
+            <p className="text-gray-400 text-left">InMail</p>
             <div className="grow flex bg-[#515151] items-center px-4 py-2 mr-9 border-[0.5px] border-[#FFFFFF99] rounded-full">
               <Icon>search</Icon>
               <input
@@ -193,7 +193,7 @@ const Chat: NextPage = () => {
                   )
               )}
           </div>
-          <div className="sticky bottom-0 grow flex bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">
+          <div className="absolute w-[1230px] bottom-[20px] grow flex flex-row bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">
             <input
               onKeyUp={onKeyUp}
               ref={inputRef}

@@ -17,7 +17,8 @@ const formatTimestamp = (timestamp: any) => {
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const seconds = String(date.getSeconds()).padStart(2, "0");
   const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  return formattedDate;
+  // return formattedDate;
+  return `${hours}:${minutes}`;
 };
 
 const ChatFrame = ({ avatar, message, timeStamp, type }: chartFrameProps) => {
@@ -28,7 +29,13 @@ const ChatFrame = ({ avatar, message, timeStamp, type }: chartFrameProps) => {
         "flex-row-reverse": type !== "other",
       })}
     >
-      <Image src={avatar} alt={type} width="41" height="41" />
+      <Image
+        src={avatar}
+        alt={type}
+        width="41"
+        height="41"
+        className="rounded-full"
+      />
       <div
         className={clsx("flex flex-col space-y-2 leading-6", {
           "items-start": type === "other",
@@ -40,9 +47,9 @@ const ChatFrame = ({ avatar, message, timeStamp, type }: chartFrameProps) => {
             "rounded-[4px] w-fit text-white max-w-[300px] py-2 px-4 border-black-2 ",
             {
               "bg-[#515151] shadow-[0px_22px_60px_rgba(0, 0, 0, 0.04)]":
-                type === "me",
+                type === "other",
               "bg-[#37B649] bg-opacity-30 shadow-[0px_22px_60px_-14px rgba(0, 0, 0, 0.04)]":
-                type !== "me",
+                type !== "other",
             }
           )}
         >
