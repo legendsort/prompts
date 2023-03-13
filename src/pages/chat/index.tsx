@@ -112,8 +112,15 @@ const Chat: NextPage = () => {
 
   const onKeyUp = (event: any) => {
     if (event.keyCode === 13) {
-      handleSend();
+      handleUserSearch(event);
     }
+  };
+
+  const handleUserSearch = (e: any) => {
+    const user: string = e.target.value;
+    UserService.find_by_name({ username: user }).then((data) => {
+      setUsers(data.data as any);
+    });
   };
 
   return (
@@ -125,9 +132,15 @@ const Chat: NextPage = () => {
             <div className="grow flex bg-[#515151] items-center px-4 py-2 mr-9 border-[0.5px] border-[#FFFFFF99] rounded-full">
               <Icon>search</Icon>
               <input
+                onKeyUp={onKeyUp}
                 className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4"
+                style={{ width: "-webkit-fill-available" }}
                 type="text"
                 placeholder="Search Users..."
+                name="userSearch"
+                onChange={(e: any) => {
+                  handleUserSearch(e);
+                }}
               />
             </div>
             <div className="space-y-6 cursor-pointer">

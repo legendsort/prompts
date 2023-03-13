@@ -117,6 +117,12 @@ const Chat: NextPage = () => {
     }
   };
 
+  const handleUserSearch = (e: any) => {
+    const user: string = e.target.value;
+    UserService.find_by_name({ username: user }).then((data) => {
+      setUsers(data.data as any);
+    });
+  };
   return (
     <div className="bg-[#222236] w-full rounded-lg  relative h-[840px]">
       <div className="grid grid-cols-12 h-screen max-h-[840px] relative">
@@ -126,9 +132,13 @@ const Chat: NextPage = () => {
             <div className="grow flex bg-[#515151] items-center px-4 py-2 mr-9 border-[0.5px] border-[#FFFFFF99] rounded-full">
               <Icon>search</Icon>
               <input
-                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4 w-[100px]"
+                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4"
+                style={{ width: "-webkit-fill-available" }}
                 type="text"
                 placeholder="Search Users..."
+                onChange={(e: any) => {
+                  handleUserSearch(e);
+                }}
               />
             </div>
             <div className="space-y-6 cursor-pointer">

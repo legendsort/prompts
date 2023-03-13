@@ -22,14 +22,16 @@ const User = ({ avatar, name, nickName, currentId, clientId }: userProps) => {
 
   return (
     <>
-      <div className="flex flex-row space-x-4" onClick={handleClick}>
-        <Image
-          src={avatar}
-          alt="avatar"
-          width="41"
-          height="41"
-          className="rounded-full"
-        />
+      <div className="flex flex-row space-x-4  " onClick={handleClick}>
+        <div className="rounded-full w-[41px] h-[41px]">
+          <Image
+            src={avatar}
+            alt="avatar"
+            width="41"
+            height="41"
+            className="rounded-full"
+          />
+        </div>
         <div className="flex flex-col text-sm">
           <p>{name}</p>
           <p>@{nickName}</p>
