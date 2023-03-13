@@ -193,7 +193,10 @@ const Chat: NextPage = () => {
                   )
               )}
           </div>
-          <div className="absolute w-[1230px] bottom-[20px] grow flex flex-row bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">
+          <div
+            className="absolute bottom-[20px] grow flex flex-row bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4"
+            style={{ width: "-webkit-fill-available" }}
+          >
             <input
               onKeyUp={onKeyUp}
               ref={inputRef}
