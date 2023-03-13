@@ -1,14 +1,21 @@
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import Icon from '@/components/Icon';
-import User from '@/components/User';
-import ChatFrame from '@/components/ChatFrame';
-import React, { useState, useRef, useEffect, RefObject } from 'react';
-import UserService from '../../supabase/User';
-import MessageService from '../../supabase/Message';
-import RoomService from '../../supabase/Room';
-import supabase from '@/utils/supabase';
-import { useRouter } from 'next/router';
+import type { NextPage } from "next";
+import Image from "next/image";
+import Icon from "@/components/Icon";
+import User from "@/components/User";
+import ChatFrame from "@/components/ChatFrame";
+import React, { useState, useRef, useEffect, RefObject } from "react";
+import UserService from "../../supabase/User";
+import MessageService from "../../supabase/Message";
+import RoomService from "../../supabase/Room";
+import supabase from "@/utils/supabase";
+import { useRouter } from "next/router";
+
+interface userProps {
+  avatar: string;
+  name: string;
+  nickName: string;
+  avartar_url?: string;
+}
 
 const Chat: NextPage = () => {
   const router = useRouter();
@@ -17,38 +24,42 @@ const Chat: NextPage = () => {
   const [users, setUsers] = useState([]);
   const [current, setCurrent] = useState({});
   const [messages, setMessages] = useState([]);
-  const [client, setClient] = useState('');
+  const [client, setClient] = useState("");
 
   const inputRef = useRef();
 
-  const getMessages = async (roomId) => {
+  const getMessages = async (roomId: string) => {
     const room = await RoomService.find_room({ room_id: roomId });
     if (room.error) return;
-    if (room.data?.length === 0) return [];
-    const clientId = room.data[0].user2 === current.id ? room.data[0].user1 : room.data[0].user2;
+    if (room.data === null || room.data.length === 0) return [];
+    const clientId =
+      room.data[0]?.user2 === current.id
+        ? room.data[0]?.user1
+        : room.data[0]?.user2;
     setClient(clientId);
     const client = await UserService.find({ id: clientId });
     if (client.error) return;
+    if (client.data === null) return;
     setClient(client.data[0]);
-    const { data, error } = await MessageService.retrieve({ room_id: roomId });
+    const { data } = await MessageService.retrieve({ room_id: roomId });
     setMessages(data);
     return [];
   };
 
   useEffect(() => {
     const channel = supabase
-      .channel('message')
+      .channel("message")
       .on(
-        'postgres_changes',
+        "postgres_changes",
         {
-          event: '*',
-          schema: 'public',
-          table: 'message',
-          filter: 'room_id=eq.' + roomId,
+          event: "*",
+          schema: "public",
+          table: "message",
+          filter: "room_id=eq." + roomId,
         },
         (payload) => {
           getMessages(roomId);
-        },
+        }
       )
       .subscribe();
 
@@ -62,13 +73,13 @@ const Chat: NextPage = () => {
       const { data, error } = response;
       if (error !== null) return;
       if (!data.session) {
-        window.location.pathname = '/login';
+        window.location.pathname = "/login";
         return;
       }
       const id = data.session.user.id;
 
       if (error !== null) {
-        window.location.pathname = '/login';
+        window.location.pathname = "/login";
         return;
       }
       const res = await UserService.find({ id });
@@ -79,7 +90,7 @@ const Chat: NextPage = () => {
 
   const handleSend = () => {
     const message = inputRef.current.value;
-    if (message === '') return;
+    if (message === "") return;
     MessageService.create({
       room_id: roomId,
       sender_id: current.id,
@@ -87,7 +98,7 @@ const Chat: NextPage = () => {
       content: message,
     }).then(({ data, error }) => {
       if (error === null) {
-        inputRef.current.value = '';
+        inputRef.current.value = "";
       }
     });
   };
@@ -131,35 +142,45 @@ const Chat: NextPage = () => {
         <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10">
           <div className="flex items-center bg-[#4CDE55] h-[60px] w-full px-4 mb-6">
             <div className="flex flex-row gap-4 items-center">
-              <Image src={client.avatar_url} alt="avatar" width="41" height="41" className="rounded-full" />
+              <Image
+                src={client.avatar_url}
+                alt="avatar"
+                width="41"
+                height="41"
+                className="rounded-full"
+              />
               <div className="flex flex-col text-sm text-black">
                 <p className="font-bold">{client.username}</p>
-                <p className="text-xs">{client.status ? 'Typing...' : ''} </p>
+                <p className="text-xs">{client.status ? "Typing..." : ""} </p>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-6 px-4">
             {messages &&
-              messages.map(({ avatar_url, content, created_at, sender_id, receiver_id }, index) =>
-                current.id === sender_id ? (
-                  <div key={index} className="ml-auto">
-                    <ChatFrame
-                      avatar={current.avatar_url}
-                      message={content}
-                      timeStamp={created_at}
-                      type={current.id === sender_id ? 'me' : 'other'}
-                    />
-                  </div>
-                ) : (
-                  <div key={index} className="mr-auto">
-                    <ChatFrame
-                      avatar={client.avatar_url}
-                      message={content}
-                      timeStamp={created_at}
-                      type={current.id === sender_id ? 'me' : 'other'}
-                    />
-                  </div>
-                ),
+              messages.map(
+                (
+                  { avatar_url, content, created_at, sender_id, receiver_id },
+                  index
+                ) =>
+                  current.id === sender_id ? (
+                    <div key={index} className="ml-auto">
+                      <ChatFrame
+                        avatar={current.avatar_url}
+                        message={content}
+                        timeStamp={created_at}
+                        type={current.id === sender_id ? "me" : "other"}
+                      />
+                    </div>
+                  ) : (
+                    <div key={index} className="mr-auto">
+                      <ChatFrame
+                        avatar={client.avatar_url}
+                        message={content}
+                        timeStamp={created_at}
+                        type={current.id === sender_id ? "me" : "other"}
+                      />
+                    </div>
+                  )
               )}
           </div>
           <div className="sticky bottom-0 grow flex bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4">

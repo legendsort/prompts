@@ -1,4 +1,4 @@
-import supabase from '../utils/supabase';
+import supabase from "../utils/supabase";
 
 const create = async ({ tag, price, image }: any) => {
   const prompt = {
@@ -6,13 +6,16 @@ const create = async ({ tag, price, image }: any) => {
     price,
     image,
   };
-  const response = await supabase.from('prompt').insert(prompt);
+  const response = await supabase.from("prompt").insert(prompt);
 
   return response;
 };
 
 const find_all = async (tag: any) => {
-  const { data, error } = await supabase.from('prompt').select('id, tag, price, image').like('tag', `%${tag}%`);
+  const { data, error } = await supabase
+    .from("prompt")
+    .select("id, tag, price, image")
+    .like("tag", `%${tag}%`);
 
   return {
     data,
@@ -22,9 +25,9 @@ const find_all = async (tag: any) => {
 
 const find = async (tag: any, page_size = 10, page = 1) => {
   const { data, error } = await supabase
-    .from('prompt')
-    .select('id, tag, price, image')
-    .like('tag', `%${tag}%`)
+    .from("prompt")
+    .select("id, tag, price, image")
+    .like("tag", `%${tag}%`)
     .limit(page_size)
     .range((page - 1) * page_size, page * page_size - 1);
   return { data, error };
