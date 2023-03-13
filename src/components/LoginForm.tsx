@@ -44,11 +44,11 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
 
   useEffect(() => {
     onChildData(isLogin);
-  }, [isLogin]);
+  }, [isLogin, onChildData]);
 
   return (
     <form
-      className="flex flex-col w-full bg-[#FFFFFF1A] rounded-lg mb-40 max-w-[470px] mx-auto"
+      className="flex flex-col w-full bg-[#FFFFFF1A] rounded-lg mb-40 min-w-[470px] max-w-[470px] mx-auto"
       onSubmit={onSubmit}
     >
       <div className="w-full justify-between items-center text-center flex flex-row border-b-[0.5px] border-[#FFFFFF66] mb-10">
