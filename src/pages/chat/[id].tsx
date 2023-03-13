@@ -104,7 +104,6 @@ const Chat: NextPage = () => {
   };
 
   const onKeyUp = (event) => {
-    console.log(event.code, event.keyCode);
     if (event.keyCode === 13) {
       handleSend();
     }

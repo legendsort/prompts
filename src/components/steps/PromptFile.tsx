@@ -3,7 +3,6 @@ import { useState } from "react";
 const PromptFile = () => {
   const [promptFile, setPromptFile] = useState("");
   const handleChange = (e: any) => {
-    console.log("Miracle textarea", e.target.value);
     setPromptFile(e.target.value);
   };
   return (

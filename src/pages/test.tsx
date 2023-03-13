@@ -1,18 +1,17 @@
-import UserService from '../supabase/User';
-import PromtService from '../supabase/Prompt';
-import RoomService from '../supabase/Room';
-import MessageService from '../supabase/Message';
+import UserService from "../supabase/User";
+import PromtService from "../supabase/Prompt";
+import RoomService from "../supabase/Room";
+import MessageService from "../supabase/Message";
 
 const SignIn = () => {
   const handleClick = async (e: any) => {
     e.preventDefault();
 
     const response = await UserService.sign_up({
-      email: 'sortoite@gmail.com',
-      password: '123123',
-      username: 'Timo ',
+      email: "sortoite@gmail.com",
+      password: "123123",
+      username: "Timo ",
     });
-    console.log(response);
 
     // test for user service find
     // const response = await UserService.find('Sortoite');
@@ -40,7 +39,13 @@ const SignIn = () => {
   };
   return (
     <div className="mx-auto flex min-h-screen max-w-2xl justify-center items-center ">
-      <input className="bg-blue-200 p-4 border-round-2" type="button" value="test" onClick={handleClick} color="red" />
+      <input
+        className="bg-blue-200 p-4 border-round-2"
+        type="button"
+        value="test"
+        onClick={handleClick}
+        color="red"
+      />
     </div>
   );
 };

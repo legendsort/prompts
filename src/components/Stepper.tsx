@@ -65,7 +65,6 @@ const Stepper = ({ steps, currentStep }: StepperProps) => {
     setNewStep(current);
   }, [steps, currentStep]);
   const displaySteps = newStep?.map((step: any, index: number) => {
-    console.log("Miracle newStep", newStep, step, index);
     return (
       <div
         key={index}
