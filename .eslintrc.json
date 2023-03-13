@@ -2,13 +2,6 @@
   "extends": "next/core-web-vitals",
   "plugins": ["prettier"],
   "rules": {
-    "react/display-name": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
-    "quotes": "off"
+    "react/display-name": "off"
   }
 }

@@ -17,16 +17,24 @@ interface userProps {
   avartar_url?: string;
 }
 
+interface messageProps {
+  avatar_url: string;
+  content: string;
+  created_at: string;
+  sender_id: string;
+  receiver_id: string;
+}
+
 const Chat: NextPage = () => {
   const router = useRouter();
   const roomId = router.query.id;
 
   const [users, setUsers] = useState([]);
-  const [current, setCurrent] = useState({});
-  const [messages, setMessages] = useState([]);
-  const [client, setClient] = useState("");
+  const [current, setCurrent] = useState<any>("");
+  const [messages, setMessages] = useState<any>([]);
+  const [client, setClient] = useState<any>("");
 
-  const inputRef = useRef();
+  const inputRef: RefObject<any> = useRef(null);
 
   const getMessages = async (roomId: string) => {
     const room = await RoomService.find_room({ room_id: roomId });
@@ -58,7 +66,7 @@ const Chat: NextPage = () => {
           filter: "room_id=eq." + roomId,
         },
         (payload) => {
-          getMessages(roomId);
+          getMessages(roomId as string);
         }
       )
       .subscribe();
@@ -66,7 +74,7 @@ const Chat: NextPage = () => {
     UserService.find_all().then((response) => {
       const { data, error } = response;
       if (error !== null) return;
-      setUsers(data);
+      setUsers(data as any);
     });
 
     UserService.get_session().then(async (response) => {
@@ -82,14 +90,14 @@ const Chat: NextPage = () => {
         window.location.pathname = "/login";
         return;
       }
-      const res = await UserService.find({ id });
+      const res = (await UserService.find({ id })) as any;
       setCurrent(res.data[0]);
-      getMessages(roomId);
+      getMessages(roomId as any);
     });
   }, [roomId]);
 
   const handleSend = () => {
-    const message = inputRef.current.value;
+    const message: any = inputRef.current?.value;
     if (message === "") return;
     MessageService.create({
       room_id: roomId,
@@ -103,7 +111,7 @@ const Chat: NextPage = () => {
     });
   };
 
-  const onKeyUp = (event) => {
+  const onKeyUp = (event: any) => {
     if (event.keyCode === 13) {
       handleSend();
     }
@@ -157,12 +165,15 @@ const Chat: NextPage = () => {
           <div className="flex flex-col gap-6 px-4">
             {messages &&
               messages.map(
-                (
-                  { avatar_url, content, created_at, sender_id, receiver_id },
-                  index
-                ) =>
+                ({
+                  avatar_url,
+                  content,
+                  created_at,
+                  sender_id,
+                  receiver_id,
+                }: messageProps) =>
                   current.id === sender_id ? (
-                    <div key={index} className="ml-auto">
+                    <div key={sender_id} className="ml-auto">
                       <ChatFrame
                         avatar={current.avatar_url}
                         message={content}
@@ -171,7 +182,7 @@ const Chat: NextPage = () => {
                       />
                     </div>
                   ) : (
-                    <div key={index} className="mr-auto">
+                    <div key={sender_id} className="mr-auto">
                       <ChatFrame
                         avatar={client.avatar_url}
                         message={content}

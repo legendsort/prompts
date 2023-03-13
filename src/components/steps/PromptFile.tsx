@@ -26,8 +26,8 @@ const PromptFile = () => {
           <textarea
             id="story"
             name="story"
-            rows="5"
-            cols="33"
+            rows={5}
+            cols={33}
             className="login-input mb-4 focus:outline-none focus:shadow-outline "
             placeholder="Converts movie titles into emoji"
             onChange={(e: any) => handleChange(e)}
@@ -45,8 +45,8 @@ const PromptFile = () => {
               <textarea
                 id="story"
                 name="story"
-                rows="2"
-                cols="33"
+                rows={2}
+                cols={33}
                 className="login-input mb-4 focus:outline-none focus:shadow-outline "
                 placeholder="Converts movie titles into emoji"
                 onChange={(e: any) => handleChange(e)}
@@ -93,8 +93,8 @@ const PromptFile = () => {
           <textarea
             id="story"
             name="story"
-            rows="2"
-            cols="33"
+            rows={2}
+            cols={33}
             className="login-input mb-4 focus:outline-none focus:shadow-outline "
             placeholder="To use this prompt you need to..."
             onChange={(e: any) => handleChange(e)}
@@ -105,11 +105,9 @@ const PromptFile = () => {
         <iframe
           className="mx-auto lg:float-right w-full lg:w-[590px] h-[380px] lg:h-[420px] z-0"
           src="https://player.vimeo.com/video/803439591?h=b962ddd0b6"
-          alt="sellPromptVideo"
-          data-aos="zoom-in"
-          data-aos-delay="300"
+          //   alt="sellPromptVideo"
           title="payer.vimeo.player"
-          frameborder="0"
+          //   frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
           allowFullScreen
         ></iframe>

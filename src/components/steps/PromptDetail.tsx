@@ -44,8 +44,8 @@ const PromptDetail = () => {
         <textarea
           id="story"
           name="story"
-          rows="5"
-          cols="33"
+          rows={5}
+          cols={33}
           className="login-input mb-4 focus:outline-none focus:shadow-outline "
           placeholder="Converts movie titles into emoji"
         ></textarea>
