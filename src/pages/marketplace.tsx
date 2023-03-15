@@ -2,7 +2,7 @@ import Image from 'next/image';
 import FilterSection from '@/components/FilterSection';
 import { FilterSections } from '@/helpers/mock';
 import Icon from '@/components/Icon';
-import { IFilterSection } from '@/helpers/interface';
+import { IFilterSection, Tag } from '@/helpers/interface';
 import { useState, useEffect } from 'react';
 import { FEATURED_MAP } from '@/helpers/constants';
 import PromptCard from '@/components/PromptCard';
@@ -30,7 +30,12 @@ export default function Marketplace() {
     const getAllPromps = async (newObj: any) => {
       await PromptService.find(newObj).then((result: any) => {
         console.log('Miracle all prompts', result.data);
-        setPrompts(result.data);
+        setPrompts(
+          result.data.map((p: any) => ({
+            ...p,
+            type: Tag[p.type as string],
+          })),
+        );
       });
     };
 
@@ -119,3 +124,5 @@ export default function Marketplace() {
     </>
   );
 }
+
+Marketplace.auth = true;

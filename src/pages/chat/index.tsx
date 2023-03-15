@@ -1,14 +1,13 @@
-import type { NextPage } from "next";
-import Image from "next/image";
-import Icon from "@/components/Icon";
-import User from "@/components/User";
-import ChatFrame from "@/components/ChatFrame";
-import React, { useState, useRef, useEffect, RefObject } from "react";
-import UserService from "../../supabase/User";
-import MessageService from "../../supabase/Message";
-import RoomService from "../../supabase/Room";
-import supabase from "@/utils/supabase";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import Icon from '@/components/Icon';
+import User from '@/components/User';
+import ChatFrame from '@/components/ChatFrame';
+import React, { useState, useRef, useEffect, RefObject } from 'react';
+import UserService from '../../supabase/User';
+import MessageService from '../../supabase/Message';
+import RoomService from '../../supabase/Room';
+import supabase from '@/utils/supabase';
+import { useRouter } from 'next/router';
 
 interface userProps {
   avatar: string;
@@ -30,21 +29,16 @@ const Chat: NextPage = () => {
   const roomId = router.query.id;
 
   const [users, setUsers] = useState([]);
-  const [current, setCurrent] = useState<any>("");
+  const [current, setCurrent] = useState<any>('');
   const [messages, setMessages] = useState<any>([]);
-  const [client, setClient] = useState<any>("");
-
-  const inputRef: RefObject<any> = useRef(null);
+  const [client, setClient] = useState<any>('');
 
   useEffect(() => {
     const getMessages = async (roomId: string) => {
       const room = await RoomService.find_room({ room_id: roomId });
       if (room.error) return;
       if (room.data === null || room.data.length === 0) return [];
-      const clientId =
-        room.data[0]?.user2 === current.id
-          ? room.data[0]?.user1
-          : room.data[0]?.user2;
+      const clientId = room.data[0]?.user2 === current.id ? room.data[0]?.user1 : room.data[0]?.user2;
       setClient(clientId);
       const client = await UserService.find({ id: clientId });
       if (client.error) return;
@@ -55,18 +49,18 @@ const Chat: NextPage = () => {
       return [];
     };
     const channel = supabase
-      .channel("message")
+      .channel('message')
       .on(
-        "postgres_changes",
+        'postgres_changes',
         {
-          event: "*",
-          schema: "public",
-          table: "message",
-          filter: "room_id=eq." + roomId,
+          event: '*',
+          schema: 'public',
+          table: 'message',
+          filter: 'room_id=eq.' + roomId,
         },
         (payload) => {
           getMessages(roomId as string);
-        }
+        },
       )
       .subscribe();
 
@@ -79,36 +73,12 @@ const Chat: NextPage = () => {
     UserService.get_session().then(async (response) => {
       const { data, error } = response;
       if (error !== null) return;
-      if (!data.session) {
-        window.location.pathname = "/login";
-        return;
-      }
-      const id = data.session.user.id;
-
-      if (error !== null) {
-        window.location.pathname = "/login";
-        return;
-      }
+      const id = data.session?.user.id;
       const res = (await UserService.find({ id })) as any;
       setCurrent(res.data[0]);
       getMessages(roomId as any);
     });
   }, [roomId, current.id]);
-
-  const handleSend = () => {
-    const message: any = inputRef.current?.value;
-    if (message === "") return;
-    MessageService.create({
-      room_id: roomId,
-      sender_id: current.id,
-      receiver_id: client.id,
-      content: message,
-    }).then(({ data, error }) => {
-      if (error === null) {
-        inputRef.current.value = "";
-      }
-    });
-  };
 
   const onKeyUp = (event: any) => {
     if (event.keyCode === 13) {
@@ -134,7 +104,7 @@ const Chat: NextPage = () => {
               <input
                 onKeyUp={onKeyUp}
                 className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4"
-                style={{ width: "-webkit-fill-available" }}
+                style={{ width: '-webkit-fill-available' }}
                 type="text"
                 placeholder="Search Users..."
                 name="userSearch"
@@ -161,33 +131,26 @@ const Chat: NextPage = () => {
         <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10 relative  ">
           <div className="flex flex-col gap-6 px-4">
             {messages &&
-              messages.map(
-                ({
-                  avatar_url,
-                  content,
-                  created_at,
-                  sender_id,
-                  receiver_id,
-                }: messageProps) =>
-                  current.id === sender_id ? (
-                    <div key={sender_id} className="ml-auto">
-                      <ChatFrame
-                        avatar={current.avatar_url}
-                        message={content}
-                        timeStamp={created_at}
-                        type={current.id === sender_id ? "me" : "other"}
-                      />
-                    </div>
-                  ) : (
-                    <div key={sender_id} className="mr-auto">
-                      <ChatFrame
-                        avatar={client.avatar_url}
-                        message={content}
-                        timeStamp={created_at}
-                        type={current.id === sender_id ? "me" : "other"}
-                      />
-                    </div>
-                  )
+              messages.map(({ avatar_url, content, created_at, sender_id, receiver_id }: messageProps) =>
+                current.id === sender_id ? (
+                  <div key={sender_id} className="ml-auto">
+                    <ChatFrame
+                      avatar={current.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ) : (
+                  <div key={sender_id} className="mr-auto">
+                    <ChatFrame
+                      avatar={client.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ),
               )}
           </div>
         </div>

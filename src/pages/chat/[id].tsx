@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Image from 'next/image';
 import Icon from '@/components/Icon';
 import User from '@/components/User';
@@ -9,13 +8,7 @@ import MessageService from '../../supabase/Message';
 import RoomService from '../../supabase/Room';
 import supabase from '@/utils/supabase';
 import { useRouter } from 'next/router';
-
-interface userProps {
-  avatar: string;
-  name: string;
-  nickName: string;
-  avartar_url?: string;
-}
+import { NextPageWithAuth } from '@/helpers/interface';
 
 interface messageProps {
   avatar_url: string;
@@ -25,7 +18,7 @@ interface messageProps {
   receiver_id: string;
 }
 
-const Chat: NextPage = () => {
+const Chat: NextPageWithAuth = () => {
   const router = useRouter();
   const roomId = router.query.id;
 
@@ -77,16 +70,9 @@ const Chat: NextPage = () => {
     UserService.get_session().then(async (response) => {
       const { data, error } = response;
       if (error !== null) return;
-      if (!data.session) {
-        window.location.pathname = '/login';
-        return;
-      }
-      const id = data.session.user.id;
 
-      if (error !== null) {
-        window.location.pathname = '/login';
-        return;
-      }
+      const id = data.session?.user.id;
+
       const res = (await UserService.find({ id })) as any;
       setCurrent(res.data[0]);
       getMessages(roomId as any);
@@ -221,3 +207,5 @@ const Chat: NextPage = () => {
 };
 
 export default Chat;
+
+Chat.auth = true;

@@ -1,24 +1,16 @@
-import type { NextPage } from 'next';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import Slider from 'react-slick';
-import clsx from 'classnames';
-import PromptEngineer from '@/components/PromptEngineer';
-import Icon from '@/components/Icon';
 import {
   midjourneyPromptsEngineers,
   gpt3PromptsEngineers,
   dallePromptsEngineers,
   diffusionPromptsEngineers,
 } from '@/helpers/mock';
-import React, { useState, useRef, useEffect, RefObject } from 'react';
+import React, { useState, useRef, RefObject } from 'react';
 import CustomSwiper from '@/components/CustomSwiper';
+import { NextPageWithAuth } from '@/helpers/interface';
 
-const Hire: NextPage = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [slideAfterIndex, setSlideAfterIndex] = useState(0);
-  const sliderRef: RefObject<Slider> = useRef(null);
-
+const Hire: NextPageWithAuth = () => {
   return (
     <div className="px-10">
       <div className="flex flex-row justify-center py-20">
@@ -53,3 +45,5 @@ const Hire: NextPage = () => {
 };
 
 export default Hire;
+
+Hire.auth = true;
