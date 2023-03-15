@@ -1,16 +1,16 @@
-import Image from 'next/image';
 import FilterSection from '@/components/FilterSection';
 import { FilterSections } from '@/helpers/mock';
 import Icon from '@/components/Icon';
-import { IFilterSection, Tag } from '@/helpers/interface';
+import { Tag } from '@/helpers/interface';
 import { useState, useEffect } from 'react';
-import { FEATURED_MAP } from '@/helpers/constants';
 import PromptCard from '@/components/PromptCard';
 import { trendingPrompts } from '@/helpers/mock';
 import PromptService from '../supabase/Prompt';
+import clsx from 'classnames';
 
 export default function Marketplace() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sortByCaption, setSortByCaption] = useState('trending');
   const [filterList, setFilterList] = useState<{
     [section: string]: { [key: string]: boolean };
   }>({
@@ -29,13 +29,19 @@ export default function Marketplace() {
   useEffect(() => {
     const getAllPromps = async (newObj: any) => {
       await PromptService.find(newObj).then((result: any) => {
-        console.log('Miracle all prompts', result.data);
-        setPrompts(
-          result.data.map((p: any) => ({
-            ...p,
-            type: Tag[p.type as string],
-          })),
-        );
+        console.log('Miracle resutl', result);
+        const newPrompts = result.data.map((p: any) => ({
+          ...p,
+          type: Tag[p.type as string],
+        }));
+        console.log('Miracle', newPrompts.length);
+        setPrompts(newPrompts);
+        // setPrompts(
+        //   result.data.map((p: any) => ({
+        //     ...p,
+        //     type: Tag[p.type as string],
+        //   })),
+        // );
       });
     };
 
@@ -52,11 +58,13 @@ export default function Marketplace() {
       sortby,
       type,
       category,
+      page: currentPage,
     };
 
+    setSortByCaption(newObj.sortby);
+
     getAllPromps(newObj);
-    console.log('Miracle filter', newObj);
-  }, [filterList]);
+  }, [filterList, currentPage]);
 
   const handleUpdateFilter = (section: string, key: string, value: boolean) => {
     setFilterList((preFilter) => ({
@@ -67,9 +75,9 @@ export default function Marketplace() {
     }));
   };
   const handleClick = (direction: string) => {
-    let newStep = currentStep;
-    direction === 'next' ? newStep++ : newStep--;
-    newStep > 0 && setCurrentStep(newStep);
+    let newPage = currentPage;
+    direction === 'next' ? newPage++ : newPage--;
+    newPage > 0 && setCurrentPage(newPage);
   };
 
   return (
@@ -90,13 +98,10 @@ export default function Marketplace() {
           </div>
         </div>
         <div id="trendingPrompts" className="flex flex-col pt-8 px-8 w-full mx-auto">
-          <h3 className="pb-8">Trending Prompts</h3>
+          <h3 className="pb-8">{sortByCaption === 'trending' ? 'Trending Prompts' : 'Most Popular Prompts'}</h3>
           <div className="w-full grid grid-cols-5 gap-x-6 gap-y-8 mb-16">
-            {/* {trendingPrompts.map(({ title, price, tag, image }) => (
-                <PromptCard key={title} title={title} price={price} tag={tag} image={image} />
-              ))} */}
-            {prompts?.map(({ description, price, type, image }: any) => (
-              <PromptCard key={description} title={description} price={price} tag={type} image={image} />
+            {prompts?.map(({ title, price, type, image }: any, idx: number) => (
+              <PromptCard key={idx} title={title} price={price} tag={type} image={image} />
             ))}
           </div>
           {prompts.length === 0 && (
@@ -108,13 +113,48 @@ export default function Marketplace() {
             <button className="slider-button" onClick={() => handleClick('back')}>
               <Icon>left</Icon>
             </button>
-            <button className="slider-button">1</button>
-            <button className="slider-button">2</button>
-            <button className="slider-button">3</button>
-            <button className="slider-button">4</button>
-            <button className="slider-button">5</button>
-            <button className="slider-button">6</button>
-            <button className="slider-button">7</button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 1 })}
+              onClick={() => setCurrentPage(1)}
+            >
+              1
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 2 })}
+              onClick={() => setCurrentPage(2)}
+            >
+              2
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 3 })}
+              onClick={() => setCurrentPage(3)}
+            >
+              3
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 4 })}
+              onClick={() => setCurrentPage(4)}
+            >
+              4
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 5 })}
+              onClick={() => setCurrentPage(5)}
+            >
+              5
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 6 })}
+              onClick={() => setCurrentPage(6)}
+            >
+              6
+            </button>
+            <button
+              className={clsx('slider-button', { 'bg-white text-black': currentPage === 7 })}
+              onClick={() => setCurrentPage(7)}
+            >
+              7
+            </button>
             <button className="slider-button" onClick={() => handleClick('next')}>
               <Icon>right</Icon>
             </button>

@@ -15,7 +15,7 @@ export const FilterSections: IFilterSection = {
     filterLists: {
       dalle: 'DALLE',
       midjourney: 'Midjourney',
-      GPT3: 'GPT-3',
+      gpt3: 'GPT-3',
       chatGPT: 'ChatGPT',
       prompts: 'Prompts',
       stableDiffusion: 'Stable Diffusion',

@@ -35,8 +35,8 @@ export default function Home() {
           <h3 className="mb-9 font-semibold">Featured In</h3>
 
           <div className="flex flex-wrap max-w-[1005px] gap-y-8 -mr-20">
-            {FEATURED_MAP.map(({ title, image, width, height }) => (
-              <Image key={title} className="mr-20 last:mr-0" src={image} alt={title} width={width} height={height} />
+            {FEATURED_MAP.map(({ title, image, width, height }, index) => (
+              <Image key={index} className="mr-20 last:mr-0" src={image} alt={title} width={width} height={height} />
             ))}
           </div>
         </div>
