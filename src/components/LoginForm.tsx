@@ -12,9 +12,13 @@ export type FormData = {
 };
 export interface LoginFormProps {
   onChildData: (data: boolean) => void;
+  nextPath: string;
 }
 
-const LoginForm = ({ onChildData }: LoginFormProps) => {
+const LoginForm = ({
+  onChildData,
+  nextPath = "/marketplace",
+}: LoginFormProps) => {
   const [isLogin, setIsLogin] = useState(true);
   const {
     register,
@@ -28,7 +32,7 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
         UserService.sign_in(data).then((response) => {
           const { data, error } = response;
           if (error) throw "Error in Login";
-          window.location.pathname = "/marketplace";
+          window.location.pathname = nextPath;
         });
       } else {
         UserService.sign_up(data).then((response) => {
@@ -41,6 +45,16 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
       console.log("SOME ERROR HAPPENED", e);
     }
   });
+
+  const signWithGoogle = (e: any) => {
+    e.preventDefault();
+    UserService.sign_in_google().then((response) => {
+      const { data, error } = response;
+      console.log(data);
+      if (error) throw "Error in Login";
+      // window.location.pathname = nextPath;
+    });
+  };
 
   useEffect(() => {
     onChildData(isLogin);
@@ -135,6 +149,7 @@ const LoginForm = ({ onChildData }: LoginFormProps) => {
         <button
           className="flex w-full bg-[#FFFFFF2A] hover:bg-green py-3 px-4 rounded-lg text-sm mb-8"
           type="submit"
+          onClick={signWithGoogle}
         >
           <div className="flex flex-row gap-3 jutify-center items-center mx-auto">
             <Icon>google</Icon>

@@ -7,6 +7,7 @@ const get_session = async () => {
 
 const sign_up = async ({ email, password, username }: any) => {
   const user = { email, password, username };
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -19,6 +20,20 @@ const sign_up = async ({ email, password, username }: any) => {
   if (error === null) {
     alert("Please check your email");
   }
+  return {
+    data,
+    error,
+  };
+};
+
+const sign_in_google = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "/marketplace",
+    },
+  });
+  console.log(data, error);
   return {
     data,
     error,
@@ -89,6 +104,7 @@ const find_by_name = async ({ username }: any) => {
 const User = {
   sign_in,
   sign_up,
+  sign_in_google,
   find,
   find_all,
   get_session,
