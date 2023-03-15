@@ -12,7 +12,7 @@ export type FormData = {
 };
 export interface LoginFormProps {
   onChildData: (data: boolean) => void;
-  nextPath: string;
+  nextPath?: string;
 }
 
 const LoginForm = ({
