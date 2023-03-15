@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import PromptCard from '@/components/PromptCard';
-import Icon from '@/components/Icon';
 import { FEATURED_MAP } from '@/helpers/constants';
 import {
   featuredPrompts,
@@ -13,12 +11,13 @@ import {
   dallePrompts,
   diffusionPrompts,
 } from '@/helpers/mock';
+import { useRouter } from 'next/router';
 
 import CustomSwiper from '@/components/CustomSwiper';
+import Hero from '@/components/Hero';
 
 export default function Home() {
-  const swiper = useSwiper();
-
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -29,7 +28,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className="container h-[calc(100vh-80px)] mx-auto mb-36"></div>
+        <div className="container h-[calc(100vh-80px)] mx-auto mb-36 mt-32">
+          <Hero />
+        </div>
 
         <div className="container flex flex-col items-center mx-auto mb-36">
           <h3 className="mb-9 font-semibold">Featured In</h3>
@@ -54,7 +55,9 @@ export default function Home() {
             ))}
           </div>
 
-          <button className="browse-button">Browse Marketplace</button>
+          <button className="browse-button" onClick={() => router.push('/marketplace')}>
+            Browse Marketplace
+          </button>
         </div>
 
         <div className="flex flex-col items-center py-16 mb-24 bg-[#0B88D980]">
@@ -78,7 +81,9 @@ export default function Home() {
 
           <CustomSwiper title="Most Popular Prompts This Month" data={monthPrompts} />
 
-          <button className="browse-button">Browse Marketplace</button>
+          <button className="browse-button" onClick={() => router.push('/marketplace')}>
+            Browse Marketplace
+          </button>
         </div>
 
         <div className="blog">
@@ -102,7 +107,9 @@ export default function Home() {
 
           <CustomSwiper title="Newest GPT-3 Prompts" data={gpt3Prompts} />
 
-          <button className="browse-button">Browse Marketplace</button>
+          <button className="browse-button" onClick={() => router.push('/marketplace')}>
+            Browse Marketplace
+          </button>
         </div>
 
         <div className="blog flex-row-reverse">
@@ -126,7 +133,9 @@ export default function Home() {
 
           <CustomSwiper title="Newest Stable Diffusion Prompts" data={diffusionPrompts} />
 
-          <button className="browse-button">Browse Marketplace</button>
+          <button className="browse-button" onClick={() => router.push('/marketplace')}>
+            Browse Marketplace
+          </button>
         </div>
       </main>
     </>

@@ -57,7 +57,6 @@ const LoginForm = ({ onChildData, onSuccess }: LoginFormProps) => {
     e.preventDefault();
     UserService.sign_in_google().then((response) => {
       const { data, error } = response;
-      console.log(data);
       if (error) throw 'Error in Login';
       if (onSuccess) {
         onSuccess();

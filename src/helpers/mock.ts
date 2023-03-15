@@ -431,6 +431,29 @@ export const featuredPrompts: Prompt[] = [
   },
 ];
 
+export const heroPrompts: Prompt[] = [
+  {
+    title: 'Beautiful Photorealistic Portraits',
+    tag: Tag.dalle,
+    image: '/hero/hero1.png',
+  },
+  {
+    title: 'Prompts Generators Pro',
+    tag: Tag.gpt3,
+    image: '/hero/hero2.png',
+  },
+  {
+    title: 'Pop Retro American Comic Style',
+    tag: Tag.midjourney,
+    image: '/hero/hero3.png',
+  },
+  {
+    title: 'Beautiful Pixar Girls Cute Avatars',
+    tag: Tag.diffusion,
+    image: '/hero/hero4.png',
+  },
+];
+
 export const weekPrompts: Prompt[] = [
   {
     title: 'Prompt Generator Pro',

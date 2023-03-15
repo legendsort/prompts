@@ -29,19 +29,11 @@ export default function Marketplace() {
   useEffect(() => {
     const getAllPromps = async (newObj: any) => {
       await PromptService.find(newObj).then((result: any) => {
-        console.log('Miracle resutl', result);
         const newPrompts = result.data.map((p: any) => ({
           ...p,
           type: Tag[p.type as string],
         }));
-        console.log('Miracle', newPrompts.length);
         setPrompts(newPrompts);
-        // setPrompts(
-        //   result.data.map((p: any) => ({
-        //     ...p,
-        //     type: Tag[p.type as string],
-        //   })),
-        // );
       });
     };
 

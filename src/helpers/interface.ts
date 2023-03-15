@@ -30,7 +30,7 @@ export enum TagPosition {
 
 export type Prompt = {
   title: string;
-  price: number;
+  price?: number;
   tag: string;
   image: string;
   rating?: number;
