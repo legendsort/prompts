@@ -13,10 +13,10 @@ export type FormData = {
 };
 export interface LoginFormProps {
   onChildData: (data: boolean) => void;
-  nextPath?: string;
+  onSuccess?: () => void;
 }
 
-const LoginForm = ({ onChildData, nextPath = '/marketplace' }: LoginFormProps) => {
+const LoginForm = ({ onChildData, onSuccess }: LoginFormProps) => {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const {
@@ -30,6 +30,10 @@ const LoginForm = ({ onChildData, nextPath = '/marketplace' }: LoginFormProps) =
       if (isLogin) {
         UserService.sign_in(data).then((response) => {
           const { data, error } = response;
+          if (onSuccess) {
+            onSuccess();
+            return;
+          }
           if (error) throw 'Error in Login';
           if (router.query.redirectUrl) {
             router.push(router.query.redirectUrl as string);
@@ -55,6 +59,10 @@ const LoginForm = ({ onChildData, nextPath = '/marketplace' }: LoginFormProps) =
       const { data, error } = response;
       console.log(data);
       if (error) throw 'Error in Login';
+      if (onSuccess) {
+        onSuccess();
+        return;
+      }
       if (router.query.redirectUrl) {
         router.push(router.query.redirectUrl as string);
       } else {

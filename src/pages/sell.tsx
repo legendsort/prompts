@@ -1,6 +1,6 @@
 import Stepper from '@/components/Stepper';
 import StepperControl from '@/components/StepperControl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SellPrompt from '@/components/steps/SellPrompt';
 import Account from '@/components/steps/Account';
 import Final from '@/components/steps/Final';
@@ -10,11 +10,13 @@ import PromptDetail from '@/components/steps/PromptDetail';
 import { StepperContext } from '@/contexts/StepperContext';
 import StepAction from '@/components/StepAction';
 import { NextPageWithAuth } from '@/helpers/interface';
+import UserService from '@/supabase/User';
 
 const Sell: NextPageWithAuth = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState('');
   const [finalData, setFinalData] = useState([]);
+  const [direction, setDirection] = useState('next');
   const steps = ['Sell a Prompt', 'Create An Account', 'Prompt Details', 'Prompt File', 'Get Paid', 'Thank you'];
 
   const displayStep = (step: number) => {
@@ -22,7 +24,7 @@ const Sell: NextPageWithAuth = () => {
       case 1:
         return <SellPrompt handleClick={handleClick} />;
       case 2:
-        return <Account />;
+        return <Account onSuccess={() => setCurrentStep(3)} />;
       case 3:
         return <PromptDetail />;
       case 4:
@@ -34,8 +36,25 @@ const Sell: NextPageWithAuth = () => {
     }
   };
 
+  useEffect(() => {
+    const getSession = async () => {
+      const {
+        data: { session },
+      } = await UserService.get_session();
+
+      if (session !== null && currentStep === 2) {
+        setCurrentStep(direction === 'next' ? 3 : 1);
+      }
+    };
+
+    if (currentStep === 2) {
+      getSession();
+    }
+  }, [currentStep]);
+
   const handleClick = (direction: string) => {
     let newStep = currentStep;
+    setDirection(direction);
     direction === 'next' ? newStep++ : newStep--;
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
@@ -57,7 +76,7 @@ const Sell: NextPageWithAuth = () => {
           {displayStep(currentStep)}
         </StepperContext.Provider>
       </div>
-      {currentStep !== steps.length && currentStep !== 1 && (
+      {currentStep !== steps.length && currentStep !== 1 && currentStep !== 2 && (
         <StepperControl handleClick={handleClick} currentStep={currentStep} steps={steps} />
       )}
     </div>
@@ -66,4 +85,4 @@ const Sell: NextPageWithAuth = () => {
 
 export default Sell;
 
-Sell.auth = true;
+// Sell.auth = true;
