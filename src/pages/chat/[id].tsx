@@ -1,14 +1,14 @@
-import type { NextPage } from "next";
-import Image from "next/image";
-import Icon from "@/components/Icon";
-import User from "@/components/User";
-import ChatFrame from "@/components/ChatFrame";
-import React, { useState, useRef, useEffect, RefObject } from "react";
-import UserService from "../../supabase/User";
-import MessageService from "../../supabase/Message";
-import RoomService from "../../supabase/Room";
-import supabase from "@/utils/supabase";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Icon from '@/components/Icon';
+import User from '@/components/User';
+import ChatFrame from '@/components/ChatFrame';
+import React, { useState, useRef, useEffect, RefObject } from 'react';
+import UserService from '../../supabase/User';
+import MessageService from '../../supabase/Message';
+import RoomService from '../../supabase/Room';
+import supabase from '@/utils/supabase';
+import { useRouter } from 'next/router';
 
 interface userProps {
   avatar: string;
@@ -30,9 +30,9 @@ const Chat: NextPage = () => {
   const roomId = router.query.id;
 
   const [users, setUsers] = useState([]);
-  const [current, setCurrent] = useState<any>("");
+  const [current, setCurrent] = useState<any>('');
   const [messages, setMessages] = useState<any>([]);
-  const [client, setClient] = useState<any>("");
+  const [client, setClient] = useState<any>('');
 
   const inputRef: RefObject<any> = useRef(null);
 
@@ -41,10 +41,7 @@ const Chat: NextPage = () => {
       const room = await RoomService.find_room({ room_id: roomId });
       if (room.error) return;
       if (room.data === null || room.data.length === 0) return [];
-      const clientId =
-        room.data[0]?.user2 === current.id
-          ? room.data[0]?.user1
-          : room.data[0]?.user2;
+      const clientId = room.data[0]?.user2 === current.id ? room.data[0]?.user1 : room.data[0]?.user2;
       setClient(clientId);
       const client = await UserService.find({ id: clientId });
       if (client.error) return;
@@ -56,18 +53,18 @@ const Chat: NextPage = () => {
     };
 
     const channel = supabase
-      .channel("message")
+      .channel('message')
       .on(
-        "postgres_changes",
+        'postgres_changes',
         {
-          event: "*",
-          schema: "public",
-          table: "message",
-          filter: "room_id=eq." + roomId,
+          event: '*',
+          schema: 'public',
+          table: 'message',
+          filter: 'room_id=eq.' + roomId,
         },
         (payload) => {
           getMessages(roomId as string);
-        }
+        },
       )
       .subscribe();
 
@@ -81,13 +78,13 @@ const Chat: NextPage = () => {
       const { data, error } = response;
       if (error !== null) return;
       if (!data.session) {
-        window.location.pathname = "/login";
+        window.location.pathname = '/login';
         return;
       }
       const id = data.session.user.id;
 
       if (error !== null) {
-        window.location.pathname = "/login";
+        window.location.pathname = '/login';
         return;
       }
       const res = (await UserService.find({ id })) as any;
@@ -98,7 +95,7 @@ const Chat: NextPage = () => {
 
   const handleSend = () => {
     const message: any = inputRef.current?.value;
-    if (message === "") return;
+    if (message === '') return;
     MessageService.create({
       room_id: roomId,
       sender_id: current.id,
@@ -106,7 +103,7 @@ const Chat: NextPage = () => {
       content: message,
     }).then(({ data, error }) => {
       if (error === null) {
-        inputRef.current.value = "";
+        inputRef.current.value = '';
       }
     });
   };
@@ -132,8 +129,8 @@ const Chat: NextPage = () => {
             <div className="grow flex bg-[#515151] items-center px-4 py-2 mr-9 border-[0.5px] border-[#FFFFFF99] rounded-full">
               <Icon>search</Icon>
               <input
-                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4"
-                style={{ width: "-webkit-fill-available" }}
+                className="grow bg-[#515151] outline-none placeholder:text-white placeholder:text-sm placeholder:leading-4 w-full"
+                // style={{ width: "-webkit-fill-available" }}
                 type="text"
                 placeholder="Search Users..."
                 onChange={(e: any) => {
@@ -156,56 +153,43 @@ const Chat: NextPage = () => {
           </div>
         </div>
 
-        <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10 overflow-auto h-[760px]">
-          <div className="flex items-center bg-[#4CDE55] h-[60px] w-full px-4 mb-6">
+        <div className="col-span-10 border-r-2 border-[#FFFFFF] border-opacity-10 overflow-auto h-[760px] relative">
+          <div className="flex items-center bg-[#4CDE55] h-[60px] w-full px-4 mb-6 absolute top-0 z-[100]">
             <div className="flex flex-row gap-4 items-center">
-              <Image
-                src={client.avatar_url}
-                alt="avatar"
-                width="41"
-                height="41"
-                className="rounded-full"
-              />
+              <Image src={client.avatar_url} alt="avatar" width="41" height="41" className="rounded-full" />
               <div className="flex flex-col text-sm text-black">
                 <p className="font-bold">{client.username}</p>
-                <p className="text-xs">{client.status ? "Typing..." : ""} </p>
+                <p className="text-xs">{client.status ? 'Typing...' : ''} </p>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-6 px-4">
             {messages &&
-              messages.map(
-                ({
-                  avatar_url,
-                  content,
-                  created_at,
-                  sender_id,
-                  receiver_id,
-                }: messageProps) =>
-                  current.id === sender_id ? (
-                    <div key={sender_id} className="ml-auto">
-                      <ChatFrame
-                        avatar={current.avatar_url}
-                        message={content}
-                        timeStamp={created_at}
-                        type={current.id === sender_id ? "me" : "other"}
-                      />
-                    </div>
-                  ) : (
-                    <div key={sender_id} className="mr-auto">
-                      <ChatFrame
-                        avatar={client.avatar_url}
-                        message={content}
-                        timeStamp={created_at}
-                        type={current.id === sender_id ? "me" : "other"}
-                      />
-                    </div>
-                  )
+              messages.map(({ avatar_url, content, created_at, sender_id, receiver_id }: messageProps) =>
+                current.id === sender_id ? (
+                  <div key={sender_id} className="ml-auto">
+                    <ChatFrame
+                      avatar={current.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ) : (
+                  <div key={sender_id} className="mr-auto">
+                    <ChatFrame
+                      avatar={client.avatar_url}
+                      message={content}
+                      timeStamp={created_at}
+                      type={current.id === sender_id ? 'me' : 'other'}
+                    />
+                  </div>
+                ),
               )}
           </div>
           <div
-            className="absolute bottom-[20px] grow flex flex-row bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full mx-4"
-            style={{ width: "-webkit-fill-available" }}
+            className="absolute bottom-[20px] w-full grow flex flex-row bg-[#515151] items-center px-4 py-1 items-center border-[0.5px] border-[#FFFFFF99] rounded-full w-[calc(100%-16px)] left-1/2 -translate-x-1/2"
+            // style={{ width: "-webkit-fill-available" }}
           >
             <input
               onKeyUp={onKeyUp}

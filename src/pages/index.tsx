@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import PromptCard from '@/components/PromptCard';
 import Icon from '@/components/Icon';
 import { FEATURED_MAP } from '@/helpers/constants';
@@ -14,7 +14,11 @@ import {
   diffusionPrompts,
 } from '@/helpers/mock';
 
+import CustomSwiper from '@/components/CustomSwiper';
+
 export default function Home() {
+  const swiper = useSwiper();
+
   return (
     <>
       <Head>
@@ -70,49 +74,9 @@ export default function Home() {
         </div>
 
         <div className="container flex flex-col items-center mx-auto mb-36">
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Most Popular Prompts This Week</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
+          <CustomSwiper title="Most Popular Prompts This Week" data={weekPrompts} />
 
-            <Swiper slidesPerView={4}>
-              {weekPrompts.map(({ title, price, tag, image, rating }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} rating={rating} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Most Popular Prompts This Month</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
-
-            <Swiper slidesPerView={4}>
-              {monthPrompts.map(({ title, price, tag, image, rating }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} rating={rating} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <CustomSwiper title="Most Popular Prompts This Month" data={monthPrompts} />
 
           <button className="browse-button">Browse Marketplace</button>
         </div>
@@ -134,49 +98,9 @@ export default function Home() {
         </div>
 
         <div className="container flex flex-col items-center mx-auto mb-36">
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Newest Midjourney Prompts</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
+          <CustomSwiper title="Newest Midjourney Prompts" data={midjourneyPrompts} />
 
-            <Swiper slidesPerView={4}>
-              {midjourneyPrompts.map(({ title, price, tag, image }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Newest GPT-3 Prompts</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
-
-            <Swiper slidesPerView={4}>
-              {gpt3Prompts.map(({ title, price, tag, image }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <CustomSwiper title="Newest GPT-3 Prompts" data={gpt3Prompts} />
 
           <button className="browse-button">Browse Marketplace</button>
         </div>
@@ -198,49 +122,9 @@ export default function Home() {
         </div>
 
         <div className="container flex flex-col items-center mx-auto mb-36">
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Newest DALL·E Prompts</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
+          <CustomSwiper title="Newest DALL·E Prompts" data={dallePrompts} />
 
-            <Swiper slidesPerView={4}>
-              {dallePrompts.map(({ title, price, tag, image }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-
-          <div className="prompts-swiper-action">
-            <div>
-              <h3>Newest Stable Diffusion Prompts</h3>
-              <div>
-                <button>
-                  <Icon>left</Icon>
-                </button>
-                <button>
-                  <Icon>right</Icon>
-                </button>
-              </div>
-            </div>
-
-            <Swiper slidesPerView={4}>
-              {diffusionPrompts.map(({ title, price, tag, image }) => (
-                <SwiperSlide key={title}>
-                  <PromptCard title={title} price={price} tag={tag} image={image} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <CustomSwiper title="Newest Stable Diffusion Prompts" data={diffusionPrompts} />
 
           <button className="browse-button">Browse Marketplace</button>
         </div>

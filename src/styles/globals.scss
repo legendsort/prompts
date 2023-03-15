@@ -56,7 +56,7 @@
   }
 
   .prompts-swiper-action {
-    @apply w-full mb-20;
+    @apply absolute top-0 left-0 w-full mb-20;
 
     & > div {
       @apply flex mb-9 justify-between;

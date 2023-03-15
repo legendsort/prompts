@@ -460,9 +460,65 @@ export const weekPrompts: Prompt[] = [
     image: '/mocks/week4.png',
     rating: 5.0,
   },
+  {
+    title: 'Prompt Generator Pro',
+    price: 4.99,
+    tag: Tag.gpt3,
+    image: '/mocks/week1.png',
+    rating: 5.0,
+  },
+  {
+    title: 'Detailed Book Writing',
+    price: 9.99,
+    tag: Tag.gpt3,
+    image: '/mocks/week2.png',
+    rating: 4.7,
+  },
+  {
+    title: 'Pop Retro American Comic Style',
+    price: 1.99,
+    tag: Tag.midjourney,
+    image: '/mocks/week3.png',
+    rating: 5.0,
+  },
+  {
+    title: 'YouTuber Killer Generator',
+    price: 2.99,
+    tag: Tag.gpt3,
+    image: '/mocks/week4.png',
+    rating: 5.0,
+  },
 ];
 
 export const monthPrompts: Prompt[] = [
+  {
+    title: 'Gpt-3 Prompt Generator',
+    price: 2.99,
+    tag: Tag.gpt3,
+    image: '/mocks/month1.png',
+    rating: 5.0,
+  },
+  {
+    title: 'Write Ebooks At The Lightspeed',
+    price: 3.99,
+    tag: Tag.gpt3,
+    image: '/mocks/month2.png',
+    rating: 4.7,
+  },
+  {
+    title: 'High Quality Cartoon Cat And Dog Animals',
+    price: 4.99,
+    tag: Tag.midjourney,
+    image: '/mocks/month3.png',
+    rating: 5.0,
+  },
+  {
+    title: 'Course Generator',
+    price: 2.99,
+    tag: Tag.gpt3,
+    image: '/mocks/month4.png',
+    rating: 5.0,
+  },
   {
     title: 'Gpt-3 Prompt Generator',
     price: 2.99,
@@ -518,9 +574,57 @@ export const midjourneyPrompts: Prompt[] = [
     tag: Tag.midjourney,
     image: '/mocks/mid4.png',
   },
+  {
+    title: 'Cute Stickers With Clean Backgrounds',
+    price: 1.99,
+    tag: Tag.midjourney,
+    image: '/mocks/mid1.png',
+  },
+  {
+    title: 'Animal T Shirt Designs',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/mid2.png',
+  },
+  {
+    title: '3D Wall Art',
+    price: 3.99,
+    tag: Tag.midjourney,
+    image: '/mocks/mid3.png',
+  },
+  {
+    title: 'Gift Wrap Anything',
+    price: 2.99,
+    tag: Tag.midjourney,
+    image: '/mocks/mid4.png',
+  },
 ];
 
 export const gpt3Prompts: Prompt[] = [
+  {
+    title: 'Human Written Plagiarism Free - SEO',
+    price: 2.99,
+    tag: Tag.gpt3,
+    image: '/mocks/gpt1.png',
+  },
+  {
+    title: 'Pygen - Ultimate Python Script Generator',
+    price: 5.99,
+    tag: Tag.gpt3,
+    image: '/mocks/gpt2.png',
+  },
+  {
+    title: 'Personal Shopper',
+    price: 2.99,
+    tag: Tag.gpt3,
+    image: '/mocks/gpt3.png',
+  },
+  {
+    title: 'Holy Bible Chatbot',
+    price: 9.99,
+    tag: Tag.gpt3,
+    image: '/mocks/gpt4.png',
+  },
   {
     title: 'Human Written Plagiarism Free - SEO',
     price: 2.99,
@@ -572,6 +676,30 @@ export const dallePrompts: Prompt[] = [
     tag: Tag.dalle,
     image: '/mocks/dalle4.png',
   },
+  {
+    title: 'Brunch Eclectic Spaces',
+    price: 2.99,
+    tag: Tag.dalle,
+    image: '/mocks/dalle1.png',
+  },
+  {
+    title: 'Modern Letter Logo Designs',
+    price: 1.99,
+    tag: Tag.dalle,
+    image: '/mocks/dalle2.png',
+  },
+  {
+    title: 'Fruit And Vegetable Wallpapers',
+    price: 2.99,
+    tag: Tag.dalle,
+    image: '/mocks/dalle3.png',
+  },
+  {
+    title: 'Photorealistic Pictures Of Flowers',
+    price: 3.99,
+    tag: Tag.dalle,
+    image: '/mocks/dalle4.png',
+  },
 ];
 
 export const diffusionPrompts: Prompt[] = [
@@ -599,9 +727,61 @@ export const diffusionPrompts: Prompt[] = [
     tag: Tag.diffusion,
     image: '/mocks/diffusion4.png',
   },
+  {
+    title: 'Artistic Portraits In The Rain',
+    price: 2.99,
+    tag: Tag.diffusion,
+    image: '/mocks/diffusion1.png',
+  },
+  {
+    title: 'Extraterrestrial Lifeforms',
+    price: 5.99,
+    tag: Tag.diffusion,
+    image: '/mocks/diffusion2.png',
+  },
+  {
+    title: 'Fusion City Portraits',
+    price: 2.99,
+    tag: Tag.diffusion,
+    image: '/mocks/diffusion3.png',
+  },
+  {
+    title: 'Luxurious Jewelry Designs Of Necklaces',
+    price: 3.99,
+    tag: Tag.diffusion,
+    image: '/mocks/diffusion4.png',
+  },
 ];
 
 export const dallePromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/dalle1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/dalle4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-dalle4.png',
+  },
   {
     tag: '725',
     image: '/hire/dalle1.png',
@@ -661,6 +841,34 @@ export const midjourneyPromptsEngineers: IPromptEngineer[] = [
     viewer: '31.1k',
     avatar: '/hire/avatar-midjourney4.png',
   },
+  {
+    tag: '725',
+    image: '/hire/midjourney1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/midjourney4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-midjourney4.png',
+  },
 ];
 
 export const diffusionPromptsEngineers: IPromptEngineer[] = [
@@ -692,9 +900,65 @@ export const diffusionPromptsEngineers: IPromptEngineer[] = [
     viewer: '31.1k',
     avatar: '/hire/avatar-diffusion4.png',
   },
+  {
+    tag: '725',
+    image: '/hire/diffusion1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/diffusion4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-diffusion4.png',
+  },
 ];
 
 export const gpt3PromptsEngineers: IPromptEngineer[] = [
+  {
+    tag: '725',
+    image: '/hire/gpt1.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt1.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt2.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt2.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt3.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt3.png',
+  },
+  {
+    tag: '725',
+    image: '/hire/gpt4.png',
+    engineerId: 'imagineer',
+    viewer: '31.1k',
+    avatar: '/hire/avatar-gpt4.png',
+  },
   {
     tag: '725',
     image: '/hire/gpt1.png',
